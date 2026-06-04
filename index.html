@@ -269,7 +269,10 @@
       font-size: clamp(2.25rem, 5vw, 3.5rem);
       font-weight: 900; letter-spacing: -.035em;
       line-height: 1.05; color: #fff;
+      opacity: 0; transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
     }
+    .section-h2.visible { opacity: 1; transform: translateY(0); }
 
     /* ── SERVICES ──────────────────────────── */
     .services-section { background: rgba(8,12,20,.62); }
@@ -289,10 +292,12 @@
       display: flex; flex-direction: column;
       gap: 1.25rem;
       text-decoration: none; color: inherit;
-      transition: background .3s;
+      transition: background .3s, opacity .8s ease, transform .8s ease;
       position: relative;
       overflow: hidden;
+      opacity: 0; transform: translateY(40px);
     }
+    .svc-item.visible { opacity: 1; transform: translateY(0); }
     .svc-item::before {
       content: '';
       position: absolute; inset: 0;
@@ -342,7 +347,10 @@
       font-size: clamp(1rem, 1.6vw, 1.25rem);
       line-height: 1.75;
       color: rgba(255,255,255,.7);
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .9s ease, transform .9s ease;
     }
+    .about-big-text.visible { opacity: 1; transform: translateY(0); }
     .about-big-text strong { color: #fff; }
     .about-facts { display: flex; flex-direction: column; gap: 1px; }
     .fact-row {
@@ -354,7 +362,9 @@
       margin-bottom: .5rem;
       position: relative; overflow: hidden;
       opacity: 0; transform: translateX(30px);
+      transition: opacity .7s ease, transform .7s ease;
     }
+    .fact-row.visible { opacity: 1; transform: translateX(0); }
     .fact-row::before {
       content: '';
       position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
@@ -385,7 +395,12 @@
       top: 1.5rem; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--border) 10%, var(--border) 90%, transparent);
     }
-    .process-step { text-align: center; }
+    .process-step {
+      text-align: center;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .process-step.visible { opacity: 1; transform: translateY(0); }
     .process-num {
       width: 3rem; height: 3rem;
       border-radius: 50%;
@@ -442,7 +457,10 @@
       border-radius: 1.5rem;
       background: rgba(13,21,32,.65);
       position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .9s ease, transform .9s ease;
     }
+    .cta-block.visible { opacity: 1; transform: translateY(0); }
     .cta-block::before {
       content: '';
       position: absolute; top: -80px; left: 50%;
@@ -1158,64 +1176,83 @@ window.addEventListener('scroll', () => {
   document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-/* ── SCROLL ANIMATIONS ──────────────────── */
+/* ── SCROLL ANIMATIONS (IntersectionObserver) ── */
 (function() {
-  // Services grid items
-  gsap.from('.svc-item', {
-    scrollTrigger: { trigger: '#servicesGrid', start: 'top 80%' },
-    opacity: 0, y: 40, stagger: .15, duration: .8, ease: 'power3.out'
-  });
-
-  // About section
-  gsap.from('.about-big-text', {
-    scrollTrigger: { trigger: '#aboutSection', start: 'top 75%' },
-    opacity: 0, y: 30, duration: .9, ease: 'power3.out'
-  });
-
-  // Fact rows
-  document.querySelectorAll('.fact-row').forEach((el, i) => {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      opacity: 1, x: 0, duration: .7, delay: i * .12, ease: 'power3.out'
+  function reveal(entries, obs) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
     });
-  });
+  }
 
-  // Process steps
-  gsap.from('[data-step]', {
-    scrollTrigger: { trigger: '#processSteps', start: 'top 80%' },
-    opacity: 0, y: 30, stagger: .1, duration: .7, ease: 'power3.out'
-  });
+  const opts80 = { threshold: 0.08 };
+  const io = new IntersectionObserver(reveal, opts80);
 
-  // Expertise tags — IntersectionObserver (надёжнее ScrollTrigger в iframe)
+  // Section headings
+  document.querySelectorAll('.section-h2').forEach(el => io.observe(el));
+
+  // Services grid items — staggered
+  const svcObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.svc-item').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 120);
+      });
+      svcObs.unobserve(entry.target);
+    });
+  }, opts80);
+  const svcGrid = document.getElementById('servicesGrid');
+  if (svcGrid) svcObs.observe(svcGrid);
+
+  // About text
+  const aboutText = document.querySelector('.about-big-text');
+  if (aboutText) io.observe(aboutText);
+
+  // Fact rows — staggered slide-in
+  const factsObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.fact-row').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 120);
+      });
+      factsObs.unobserve(entry.target);
+    });
+  }, opts80);
+  const factsWrap = document.querySelector('.about-facts');
+  if (factsWrap) factsObs.observe(factsWrap);
+
+  // Process steps — staggered
+  const stepsObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('[data-step]').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 100);
+      });
+      stepsObs.unobserve(entry.target);
+    });
+  }, opts80);
+  const stepsWrap = document.getElementById('processSteps');
+  if (stepsWrap) stepsObs.observe(stepsWrap);
+
+  // Expertise tags — staggered
   const tagsContainer = document.getElementById('expertiseTags');
   if (tagsContainer) {
-    const tagObserver = new IntersectionObserver((entries) => {
+    const tagObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const tags = entry.target.querySelectorAll('.exp-tag');
-          tags.forEach((tag, i) => {
-            setTimeout(() => tag.classList.add('visible'), i * 45);
-          });
-          tagObserver.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('.exp-tag').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 45);
+        });
+        tagObs.unobserve(entry.target);
       });
-    }, { threshold: 0.08 });
-    tagObserver.observe(tagsContainer);
+    }, opts80);
+    tagObs.observe(tagsContainer);
   }
 
   // CTA block
-  gsap.from('#ctaBlock', {
-    scrollTrigger: { trigger: '#ctaBlock', start: 'top 80%' },
-    opacity: 0, y: 40, duration: .9, ease: 'power3.out'
-  });
-
-  // Section headings parallax
-  gsap.utils.toArray('.section-h2').forEach(el => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      opacity: 0, y: 25, duration: .8, ease: 'power3.out'
-    });
-  });
+  const ctaBlock = document.getElementById('ctaBlock');
+  if (ctaBlock) io.observe(ctaBlock);
 })();
 
 /* ── QR CODE ────────────────────────────── */
