@@ -827,6 +827,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
   let scrollY = 0;
   window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
+  // ── CURSOR TRAIL ────────────────────────
+  const trail = [];
+  const TRAIL_MAX = 18;  // max trail points
+  window.addEventListener('mousemove', e => {
+    trail.push({ x: e.clientX, y: e.clientY, op: 0.55 });
+    if (trail.length > TRAIL_MAX) trail.shift();
+  }, { passive: true });
+
   const LINK_DIST   = 180;   // max distance for lines between particles
   const MOUSE_DIST  = 220;   // mouse attraction / extra links
   const COUNT       = 140;   // particle count
@@ -913,6 +921,26 @@ document.getElementById('year').textContent = new Date().getFullYear();
   function animate() {
     frame++;
     ctx.clearRect(0, 0, W, H);
+
+    // draw cursor trail (behind particles)
+    for (let i = 0; i < trail.length; i++) {
+      const t = trail[i];
+      const age = i / trail.length;          // 0=oldest … 1=newest
+      const r   = 2.5 * age;                  // grows toward cursor
+      const op  = age * 0.4;                  // fades toward tail
+      const g   = ctx.createRadialGradient(t.x, t.y, 0, t.x, t.y, r * 5);
+      g.addColorStop(0,  `rgba(56,189,248,${op})`);
+      g.addColorStop(1,  `rgba(14,127,192,0)`);
+      ctx.beginPath();
+      ctx.arc(t.x, t.y, r * 5, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+      // tiny bright core
+      ctx.beginPath();
+      ctx.arc(t.x, t.y, Math.max(r * .5, .5), 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(180,230,255,${op * 1.5})`;
+      ctx.fill();
+    }
 
     // update & draw particles
     particles.forEach(p => { p.update(frame); p.draw(); });
