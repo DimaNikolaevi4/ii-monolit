@@ -829,9 +829,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
   // ── CURSOR TRAIL ────────────────────────
   const trail = [];
-  const TRAIL_MAX = 18;  // max trail points
+  const TRAIL_MAX = 9;  // max trail points
   window.addEventListener('mousemove', e => {
-    trail.push({ x: e.clientX, y: e.clientY, op: 0.55 });
+    trail.push({ x: e.clientX, y: e.clientY });
     if (trail.length > TRAIL_MAX) trail.shift();
   }, { passive: true });
 
@@ -926,8 +926,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
     for (let i = 0; i < trail.length; i++) {
       const t = trail[i];
       const age = i / trail.length;          // 0=oldest … 1=newest
-      const r   = 2.5 * age;                  // grows toward cursor
-      const op  = age * 0.4;                  // fades toward tail
+      const r   = 1.2 * age;                  // grows toward cursor
+      const op  = age * 0.2;                  // fades toward tail
       const g   = ctx.createRadialGradient(t.x, t.y, 0, t.x, t.y, r * 5);
       g.addColorStop(0,  `rgba(56,189,248,${op})`);
       g.addColorStop(1,  `rgba(14,127,192,0)`);
