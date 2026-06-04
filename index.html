@@ -637,83 +637,83 @@
 
     /* ── ACCESSIBILITY BUTTON ──────────────── */
     .nav-a11y-btn {
-      background: none; border: 1px solid rgba(255,255,255,.12);
-      cursor: pointer; border-radius: .5rem;
-      display: flex; align-items: center; gap: .45rem;
-      padding: .3rem .6rem;
-      color: rgba(255,255,255,.55);
-      transition: background .2s, color .2s, border-color .2s;
+      background: none; border: none; cursor: pointer;
+      width: 2.1rem; height: 2.1rem;
+      border-radius: .5rem;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.5);
+      font-size: 1rem;
+      transition: background .2s, color .2s;
       flex-shrink: 0;
     }
-    .nav-a11y-btn:hover { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.25); }
-    .a11y-eye { font-size: 1rem; line-height: 1; }
-    .a11y-label { font-size: .62rem; font-weight: 600; line-height: 1.25;
-      text-align: left; text-transform: uppercase; letter-spacing: .04em; }
-    [data-theme="light"] .nav-a11y-btn { color: rgba(15,23,42,.55); border-color: rgba(0,0,0,.12); }
-    [data-theme="light"] .nav-a11y-btn:hover { background: rgba(0,0,0,.06); color: #1c3b85; border-color: rgba(28,59,133,.3); }
+    .nav-a11y-btn:hover { background: rgba(255,255,255,.08); color: #fff; }
+    [data-theme="light"] .nav-a11y-btn { color: rgba(15,23,42,.55); }
+    [data-theme="light"] .nav-a11y-btn:hover { background: rgba(15,23,42,.08); color: #1c3b85; }
 
     /* ── ACCESSIBILITY PANEL ────────────────── */
     .a11y-panel {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
-      background: #1a2234;
-      border-bottom: 2px solid var(--brand);
-      padding: .75rem 2rem;
-      transform: translateY(-100%);
-      transition: transform .35s cubic-bezier(.4,0,.2,1);
-      box-shadow: 0 4px 24px rgba(0,0,0,.4);
+      position: fixed; top: 68px; right: 16px; z-index: 9998;
+      background: var(--nav-bg);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.45);
+      padding: 1rem;
+      width: 220px;
+      display: none;
     }
-    .a11y-panel.open { transform: translateY(0); }
-    .a11y-panel-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    .a11y-panel.open { display: block; animation: a11yIn .18s ease; }
+    @keyframes a11yIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .a11y-group { display: flex; align-items: center; gap: .75rem; }
-    .a11y-group-label { font-size: .7rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: .06em; color: rgba(255,255,255,.45); white-space: nowrap; }
-    .a11y-row { display: flex; gap: .35rem; }
-    .a11y-font-btn, .a11y-color-btn, .a11y-img-btn {
-      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.75); cursor: pointer;
-      border-radius: .375rem; padding: .3rem .6rem;
-      font-family: inherit; font-weight: 700; line-height: 1;
-      transition: background .2s, border-color .2s, color .2s;
-      white-space: nowrap;
+    .a11y-panel-title {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: rgba(255,255,255,.5);
+      margin: 0 0 .75rem; display: flex; align-items: center; gap: .4rem;
     }
-    .a11y-font-btn:nth-child(1) { font-size: .85rem; }
-    .a11y-font-btn:nth-child(2) { font-size: 1rem; }
-    .a11y-font-btn:nth-child(3) { font-size: 1.15rem; }
-    .a11y-font-btn:hover, .a11y-color-btn:hover, .a11y-img-btn:hover {
-      background: rgba(14,127,192,.25); border-color: var(--brand-2); color: #fff;
+    [data-theme="light"] .a11y-panel-title { color: rgba(15,23,42,.45); }
+    .a11y-options { display: flex; flex-direction: column; gap: .55rem; margin-bottom: .85rem; }
+    .a11y-option {
+      display: flex; align-items: center; gap: .55rem;
+      cursor: pointer; font-size: .88rem;
+      color: rgba(255,255,255,.8);
     }
-    .a11y-font-btn.active, .a11y-color-btn.active, .a11y-img-btn.active {
-      background: var(--brand); border-color: var(--brand-2); color: #fff;
+    [data-theme="light"] .a11y-option { color: rgba(15,23,42,.8); }
+    .a11y-option input[type="checkbox"] {
+      width: 15px; height: 15px;
+      accent-color: var(--brand);
+      cursor: pointer; flex-shrink: 0;
     }
-    .a11y-reset {
-      margin-left: auto; font-family: inherit; font-size: .72rem;
-      font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      background: none; border: 1px solid rgba(255,255,255,.15);
-      color: rgba(255,255,255,.4); cursor: pointer; padding: .3rem .8rem;
-      border-radius: .375rem; transition: background .2s, color .2s;
+    .a11y-panel-footer {
+      display: flex; gap: .5rem;
+      padding-top: .75rem;
+      border-top: 1px solid var(--border);
     }
-    .a11y-reset:hover { background: rgba(255,0,0,.1); border-color: rgba(255,80,80,.3); color: #ff8080; }
+    .a11y-reset, .a11y-close {
+      flex: 1; padding: .32rem .5rem;
+      font-size: .78rem; font-family: inherit;
+      border-radius: .375rem; border: 1px solid var(--border);
+      cursor: pointer; transition: background .2s, color .2s;
+    }
+    .a11y-reset { background: none; color: rgba(255,255,255,.55); }
+    .a11y-reset:hover { background: rgba(255,255,255,.07); color: #fff; }
+    [data-theme="light"] .a11y-reset { color: rgba(15,23,42,.55); }
+    [data-theme="light"] .a11y-reset:hover { background: rgba(15,23,42,.07); color: #1c3b85; }
+    .a11y-close {
+      background: var(--brand); border-color: var(--brand); color: #fff; font-weight: 600;
+    }
+    .a11y-close:hover { background: var(--brand-2); border-color: var(--brand-2); }
 
-    /* Accessibility modes applied to <html> */
-    html[data-a11y-size="large"]  { font-size: 118%; }
-    html[data-a11y-size="xlarge"] { font-size: 140%; }
-
-    html[data-a11y-scheme="white"] { filter: invert(0); }
-    html[data-a11y-scheme="black"] body { background: #000 !important; color: #fff !important; filter: contrast(1.2); }
-    html[data-a11y-scheme="blue"]  body { background: #9dd1ff !important; color: #063462 !important; }
-    html[data-a11y-scheme="black"] .a11y-panel { background: #111; }
-    html[data-a11y-scheme="blue"]  .a11y-panel { background: #063462; }
-
-    html[data-a11y-img="off"] img,
-    html[data-a11y-img="off"] canvas,
-    html[data-a11y-img="off"] [style*="background-image"] { opacity: 0 !important; }
-
-    @media (max-width: 900px) {
-      .a11y-label { display: none; }
-      .nav-a11y-btn { padding: .35rem .45rem; border: none; }
+    /* Accessibility modes */
+    body.a11y-large-font { font-size: 118% !important; }
+    body.a11y-large-font .nav-brand,
+    body.a11y-large-font .nav-links a { font-size: 1rem !important; }
+    body.a11y-high-contrast { filter: contrast(1.4) !important; }
+    body.a11y-no-animations *,
+    body.a11y-no-animations *::before,
+    body.a11y-no-animations *::after {
+      transition: none !important;
+      animation: none !important;
     }
 
     /* ── THEME TOGGLE ──────────────────────── */
@@ -860,32 +860,25 @@
 </div>
 
 <!-- Accessibility panel -->
-<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки версии для слабовидящих">
-  <div class="a11y-panel-inner">
-    <div class="a11y-group">
-      <span class="a11y-group-label">Размер шрифта</span>
-      <div class="a11y-row">
-        <button class="a11y-font-btn" data-size="normal" aria-label="Обычный размер шрифта">А</button>
-        <button class="a11y-font-btn" data-size="large"  aria-label="Крупный шрифт">А+</button>
-        <button class="a11y-font-btn" data-size="xlarge" aria-label="Очень крупный шрифт">А++</button>
-      </div>
-    </div>
-    <div class="a11y-group">
-      <span class="a11y-group-label">Цветовая схема</span>
-      <div class="a11y-row">
-        <button class="a11y-color-btn" data-scheme="white" aria-label="Белый фон">Б</button>
-        <button class="a11y-color-btn" data-scheme="black" aria-label="Чёрный фон">Ч</button>
-        <button class="a11y-color-btn" data-scheme="blue"  aria-label="Синий фон">С</button>
-      </div>
-    </div>
-    <div class="a11y-group">
-      <span class="a11y-group-label">Изображения</span>
-      <div class="a11y-row">
-        <button class="a11y-img-btn" data-img="on"  aria-label="Включить изображения">Вкл</button>
-        <button class="a11y-img-btn" data-img="off" aria-label="Отключить изображения">Выкл</button>
-      </div>
-    </div>
-    <button class="a11y-reset" id="a11yReset">Сбросить</button>
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки доступности">
+  <p class="a11y-panel-title"><i class="bi bi-eye"></i> Для слабовидящих</p>
+  <div class="a11y-options">
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yLargeFont">
+      <span>Крупный шрифт</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yHighContrast">
+      <span>Высокий контраст</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yNoAnimations">
+      <span>Без анимаций</span>
+    </label>
+  </div>
+  <div class="a11y-panel-footer">
+    <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
+    <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
   </div>
 </div>
 
@@ -898,9 +891,10 @@
     <a class="nav-brand" href="/" id="navBrand">
       <i class="bi bi-cpu-fill nav-brand-dot"></i> ИИ‑Монолит
     </a>
-    <button class="nav-a11y-btn" id="a11yToggle" aria-label="Версия для слабовидящих" title="Версия для слабовидящих">
-      <span class="a11y-eye"><i class="bi bi-eye"></i></span>
-      <span class="a11y-label">Версия для<br>слабовидящих</span>
+    <button class="nav-a11y-btn" id="a11yToggle" type="button"
+            aria-label="Версия для слабовидящих" title="Версия для слабовидящих"
+            aria-expanded="false" aria-controls="a11yPanel">
+      <i class="bi bi-eye" aria-hidden="true"></i>
     </button>
     <button class="nav-theme-toggle" id="themeToggle" aria-label="Переключить тему">
       <i class="bi bi-sun" id="themeIcon"></i>
@@ -1390,77 +1384,59 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ── ACCESSIBILITY JS ──────────────────── */
   (function() {
-    const html    = document.documentElement;
+    const body    = document.body;
     const panel   = document.getElementById('a11yPanel');
     const toggle  = document.getElementById('a11yToggle');
-    const reset   = document.getElementById('a11yReset');
+    const btnReset = document.getElementById('a11yReset');
+    const btnClose = document.getElementById('a11yClose');
+    const cbLF    = document.getElementById('a11yLargeFont');
+    const cbHC    = document.getElementById('a11yHighContrast');
+    const cbNA    = document.getElementById('a11yNoAnimations');
     const STORE   = 'ii-a11y';
 
     function load() {
       try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
     }
-    function save(st) { localStorage.setItem(STORE, JSON.stringify(st)); }
+    function save(p) { localStorage.setItem(STORE, JSON.stringify(p)); }
 
-    function applySize(v) {
-      html.removeAttribute('data-a11y-size');
-      if (v && v !== 'normal') html.setAttribute('data-a11y-size', v);
-      document.querySelectorAll('.a11y-font-btn').forEach(b => b.classList.toggle('active', b.dataset.size === (v||'normal')));
+    function applyPrefs(p) {
+      body.classList.toggle('a11y-large-font',    !!p.lf);
+      body.classList.toggle('a11y-high-contrast', !!p.hc);
+      body.classList.toggle('a11y-no-animations', !!p.na);
     }
-    function applyScheme(v) {
-      html.removeAttribute('data-a11y-scheme');
-      if (v && v !== 'white') html.setAttribute('data-a11y-scheme', v);
-      document.querySelectorAll('.a11y-color-btn').forEach(b => b.classList.toggle('active', b.dataset.scheme === (v||'white')));
-    }
-    function applyImg(v) {
-      html.removeAttribute('data-a11y-img');
-      if (v && v !== 'on') html.setAttribute('data-a11y-img', v);
-      document.querySelectorAll('.a11y-img-btn').forEach(b => b.classList.toggle('active', b.dataset.img === (v||'on')));
+    function syncCheckboxes(p) {
+      if (cbLF) cbLF.checked = !!p.lf;
+      if (cbHC) cbHC.checked = !!p.hc;
+      if (cbNA) cbNA.checked = !!p.na;
     }
 
-    // Restore saved settings
-    const st = load();
-    if (st.size)   applySize(st.size);
-    if (st.scheme) applyScheme(st.scheme);
-    if (st.img)    applyImg(st.img);
+    // Restore on load
+    const prefs = load();
+    applyPrefs(prefs);
+    syncCheckboxes(prefs);
 
-    // Toggle panel
-    if (toggle) toggle.addEventListener('click', () => panel.classList.toggle('open'));
+    function openPanel()  { panel.classList.add('open');    toggle.setAttribute('aria-expanded', 'true');  }
+    function closePanel() { panel.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+
+    if (toggle) toggle.addEventListener('click', () =>
+      panel.classList.contains('open') ? closePanel() : openPanel()
+    );
 
     // Close on outside click
     document.addEventListener('click', e => {
       if (panel.classList.contains('open') && !panel.contains(e.target) && !toggle.contains(e.target))
-        panel.classList.remove('open');
+        closePanel();
     });
 
-    // Font size buttons
-    document.querySelectorAll('.a11y-font-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const v = btn.dataset.size; applySize(v);
-        const s = load(); s.size = v; save(s);
-      });
-    });
+    if (cbLF) cbLF.addEventListener('change', () => { prefs.lf = cbLF.checked; applyPrefs(prefs); save(prefs); });
+    if (cbHC) cbHC.addEventListener('change', () => { prefs.hc = cbHC.checked; applyPrefs(prefs); save(prefs); });
+    if (cbNA) cbNA.addEventListener('change', () => { prefs.na = cbNA.checked; applyPrefs(prefs); save(prefs); });
 
-    // Color scheme buttons
-    document.querySelectorAll('.a11y-color-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const v = btn.dataset.scheme; applyScheme(v);
-        const s = load(); s.scheme = v; save(s);
-      });
+    if (btnReset) btnReset.addEventListener('click', () => {
+      prefs.lf = prefs.hc = prefs.na = false;
+      applyPrefs(prefs); syncCheckboxes(prefs); save(prefs);
     });
-
-    // Image buttons
-    document.querySelectorAll('.a11y-img-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const v = btn.dataset.img; applyImg(v);
-        const s = load(); s.img = v; save(s);
-      });
-    });
-
-    // Reset
-    if (reset) reset.addEventListener('click', () => {
-      applySize('normal'); applyScheme('white'); applyImg('on');
-      localStorage.removeItem(STORE);
-    });
+    if (btnClose) btnClose.addEventListener('click', closePanel);
   })();
 
   /* ── THEME TOGGLE JS ───────────────────── */
