@@ -4,241 +4,244 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Развёртывание моделей — ИИ-Монолит</title>
-  <meta name="description" content="Полный цикл развёртывания ИИ-моделей: Docker, Kubernetes, мониторинг, API, SLA 99.5%." />
-  <link rel="icon" href="img/logo.svg" />
+  <meta name="description" content="Разворачиваю ИИ-модели в продакшен: Docker, Kubernetes, API, мониторинг. SLA 99.5%. Любые облака и on-premise." />
+  <link rel="icon" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="/custom.css" />
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md fixed-top bg-white shadow-sm" id="mainNav">
+<nav class="site-nav opaque" id="siteNav">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/" style="color:var(--brand)">
-      <i class="bi bi-cpu fs-4"></i><span>ИИ-Монолит</span>
-    </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list fs-3"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
-        <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-        <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/deployment.html">Развёртывание</a></li>
-        <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
-        <li class="nav-item"><a class="nav-link" href="/portfolio.html">Портфолио</a></li>
-        <li class="nav-item"><a class="nav-link" href="/legal.html">Правовая информация</a></li>
-        <li class="nav-item ms-md-2">
-          <a class="btn btn-brand px-3 py-2 rounded-3" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Связаться</a>
-        </li>
-      </ul>
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит
+      </a>
+      <button class="navbar-toggler border-0 bg-transparent p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list fs-3" style="color:var(--text)"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/deployment.html">Развёртывание</a></li>
+          <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
+          <li class="nav-item"><a class="nav-link" href="/portfolio.html">Направления</a></li>
+          <li class="nav-item"><a class="nav-link" href="/legal.html">Документы</a></li>
+          <li class="nav-item ms-md-2">
+            <a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Обсудить проект</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 
 <section class="page-hero">
-  <div class="container">
-    <span class="badge mb-3 px-3 py-2 rounded-pill" style="background:rgba(255,255,255,.18);color:#fff">
-      <i class="bi bi-cloud-arrow-up me-1"></i>Коммерческое предложение
-    </span>
-    <h1 class="display-5 fw-bold mb-3">Развёртывание ИИ-моделей</h1>
-    <p class="fs-5 mb-0" style="opacity:.88;max-width:680px">Модель готова — заставим её работать в продакшене. Полный цикл от контейнеризации до мониторинга с SLA от 99.5%.</p>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-tag"><i class="bi bi-cloud-arrow-up"></i> Услуга</div>
+    <h1>Развёртывание ИИ-моделей</h1>
+    <p>Модель готова — помогу запустить её в продакшен. Настраиваю инфраструктуру, API, мониторинг и CI/CD. Вы получаете стабильный сервис, а не просто запущенный контейнер.</p>
+    <div class="page-hero-divider"></div>
   </div>
 </section>
 
-<main class="py-5">
-  <div class="container py-3">
+<main>
+  <div class="container py-5">
+    <div class="py-3">
 
-    <p class="text-muted fs-5 mb-5" style="max-width:760px">
-      Работаем с любыми облачными провайдерами и on-premise решениями. Настраиваем CI/CD пайплайны, Canary-деплой и полный observability-стек. Вы получаете не просто запущенный сервис, а production-ready инфраструктуру.
-    </p>
+      <p class="section-lead mb-5">
+        Работаю с AWS, Google Cloud, Azure, Yandex Cloud, Selectel и on-premise. Настраиваю Canary-деплой, автоматическое масштабирование и полный observability-стек. Берусь за инфраструктуру целиком или отдельные части.
+      </p>
 
-    <h2 class="fw-bold mb-4">Что входит в услугу</h2>
-    <div class="row g-3 mb-5">
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-server fs-4"></i></div>
-          <h6 class="fw-bold">Инфраструктура</h6>
-          <p class="small text-muted mb-0">Подбор и настройка серверов, GPU-кластеры, балансировка нагрузки</p>
+      <div class="section-tag"><i class="bi bi-list-check"></i> Состав услуги</div>
+      <h2 class="section-title mb-4">Что входит</h2>
+      <div class="row g-3 mb-5">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-server"></i></div>
+            <h6>Инфраструктура</h6>
+            <p>Подбор серверов, GPU-кластеры, балансировка нагрузки под вашу модель.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-box fs-4"></i></div>
-          <h6 class="fw-bold">Docker / Kubernetes</h6>
-          <p class="small text-muted mb-0">Контейнеризация, оркестрация, авто-скейлинг, rolling updates</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+            <h6>Docker / Kubernetes</h6>
+            <p>Контейнеризация, оркестрация, авто-скейлинг, rolling updates без даунтайма.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-broadcast fs-4"></i></div>
-          <h6 class="fw-bold">API-эндпоинты</h6>
-          <p class="small text-muted mb-0">REST/gRPC API, аутентификация, rate limiting, документация</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-broadcast"></i></div>
+            <h6>API-эндпоинты</h6>
+            <p>REST или gRPC API с аутентификацией, rate limiting и документацией.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-graph-up fs-4"></i></div>
-          <h6 class="fw-bold">Мониторинг</h6>
-          <p class="small text-muted mb-0">Логи, метрики, алерты, дрифт-детекция, трекинг ресурсов</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Процесс работы</h2>
-    <div class="steps-wrapper mb-5">
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">1</div>
-        <div>
-          <h6 class="fw-bold mb-1"><i class="bi bi-server me-2" style="color:var(--brand)"></i>Анализ требований</h6>
-          <p class="text-muted small mb-0">Изучаем вашу модель, прогнозируем нагрузку, определяем требования к задержке и доступности. Выбираем оптимальную архитектуру развёртывания.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">2</div>
-        <div>
-          <h6 class="fw-bold mb-1"><i class="bi bi-box me-2" style="color:var(--brand)"></i>Контейнеризация и оркестрация</h6>
-          <p class="text-muted small mb-0">Упаковываем модель в Docker-контейнер, настраиваем Kubernetes для автоматического масштабирования, управления ресурсами и отказоустойчивости.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">3</div>
-        <div>
-          <h6 class="fw-bold mb-1"><i class="bi bi-activity me-2" style="color:var(--brand)"></i>Настройка мониторинга</h6>
-          <p class="text-muted small mb-0">Развёртываем стек мониторинга: логирование, метрики производительности, алерты на аномалии, трекинг использования ресурсов и дрифт-детекцию.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">4</div>
-        <div>
-          <h6 class="fw-bold mb-1"><i class="bi bi-cloud me-2" style="color:var(--brand)"></i>API и интеграция</h6>
-          <p class="text-muted small mb-0">Создаём REST/gRPC API с документацией, настраиваем аутентификацию, rate limiting, версионирование моделей и CI/CD пайплайн для обновлений.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">5</div>
-        <div>
-          <h6 class="fw-bold mb-1"><i class="bi bi-shield-check me-2" style="color:var(--brand)"></i>Запуск и сопровождение</h6>
-          <p class="text-muted small mb-0">Плавный запуск с Canary-деплоем, нагрузочное тестирование, обучение вашей команды, настройка SLA и оперативная поддержка.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Преимущества</h2>
-    <div class="row g-4 mb-5">
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-lightning-charge fs-3"></i></div>
-          <h6 class="fw-bold">Высокая производительность</h6>
-          <p class="small text-muted mb-0">Оптимизация инференса: квантование, ONNX Runtime, TensorRT — снижение задержки до 10 раз.</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-bar-chart fs-3"></i></div>
-          <h6 class="fw-bold">Масштабируемость</h6>
-          <p class="small text-muted mb-0">Автоматическое масштабирование под нагрузку: от единичных запросов до тысяч в секунду.</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-shield-check fs-3"></i></div>
-          <h6 class="fw-bold">Надёжность и SLA</h6>
-          <p class="small text-muted mb-0">Отказоустойчивая архитектура, автоматический failover, гарантия доступности от 99.5%.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Часто задаваемые вопросы</h2>
-    <div class="accordion mb-5" id="faqDeploy">
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#fd1">Какие облачные платформы вы поддерживаете?</button>
-        </h2>
-        <div id="fd1" class="accordion-collapse collapse" data-bs-parent="#faqDeploy">
-          <div class="accordion-body px-0 text-muted">AWS, Google Cloud, Azure, Yandex Cloud, Selectel, а также on-premise развёртывание на вашем оборудовании.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#fd2">Сколько времени занимает развёртывание?</button>
-        </h2>
-        <div id="fd2" class="accordion-collapse collapse" data-bs-parent="#faqDeploy">
-          <div class="accordion-body px-0 text-muted">От 1 дня для простых моделей до 2 недель для сложных распределённых систем. Точные сроки определяются после анализа требований.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#fd3">Предоставляете ли вы SLA?</button>
-        </h2>
-        <div id="fd3" class="accordion-collapse collapse" data-bs-parent="#faqDeploy">
-          <div class="accordion-body px-0 text-muted">Да, мы предлагаем SLA с гарантией доступности от 99.5% и регламентированным временем реакции на инциденты.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#fd4">Можно ли масштабировать решение?</button>
-        </h2>
-        <div id="fd4" class="accordion-collapse collapse" data-bs-parent="#faqDeploy">
-          <div class="accordion-body px-0 text-muted">Все наши решения проектируются с учётом горизонтального масштабирования и могут обрабатывать растущие нагрузки.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-card p-4 p-md-5">
-      <div class="row align-items-center g-4">
-        <div class="col-12 col-md-7">
-          <h3 class="fw-bold mb-2">Обсудим развёртывание вашей модели?</h3>
-          <p class="text-muted mb-4">Напишите нам в приватный чат в Макс — ответим в течение часа</p>
-          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn btn-brand btn-lg px-4">
-            <i class="bi bi-chat-dots me-2"></i>Написать в Макс
-          </a>
-        </div>
-        <div class="col-12 col-md-5 text-center">
-          <div class="qr-wrap d-inline-block">
-            <div id="qr-dep"></div>
-            <p class="mb-0 mt-2 small text-muted">Отсканируйте QR-код</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-graph-up"></i></div>
+            <h6>Мониторинг</h6>
+            <p>Логи, метрики, алерты, дрифт-детекция и трекинг потребления ресурсов.</p>
           </div>
         </div>
       </div>
+
+      <div class="section-tag"><i class="bi bi-signpost-2"></i> Как работаю</div>
+      <h2 class="section-title mb-4">Процесс</h2>
+      <div class="row g-0 mb-5">
+        <div class="col-lg-8">
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h6>Анализ и архитектура</h6>
+              <p>Изучаю вашу модель, прогнозирую нагрузку, определяю требования к задержке и доступности. Выбираю оптимальную архитектуру развёртывания.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h6>Контейнеризация</h6>
+              <p>Упаковываю модель в Docker-контейнер, настраиваю Kubernetes для автоматического масштабирования и отказоустойчивости.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h6>Мониторинг и алерты</h6>
+              <p>Разворачиваю стек мониторинга: логирование, метрики производительности, алерты на аномалии и дрифт-детекцию.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h6>API и интеграция</h6>
+              <p>Создаю REST/gRPC API с документацией, настраиваю аутентификацию, rate limiting и CI/CD пайплайн для бесшовных обновлений.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h6>Запуск и передача</h6>
+              <p>Плавный запуск через Canary-деплой, нагрузочное тестирование. Передаю всю документацию и настраиваю SLA по вашим требованиям.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-tag"><i class="bi bi-person-check"></i> Почему выбирают меня</div>
+      <h2 class="section-title mb-4">Мои преимущества</h2>
+      <div class="row g-4 mb-5">
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+            <h6>Высокая производительность</h6>
+            <p>Оптимизирую инференс: квантование, ONNX Runtime, TensorRT — снижение задержки до 10×.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-bar-chart-steps"></i></div>
+            <h6>Масштабируемость</h6>
+            <p>Проектирую под горизонтальное масштабирование: от единичных запросов до тысяч в секунду.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-shield-check"></i></div>
+            <h6>Надёжность и SLA</h6>
+            <p>Отказоустойчивая архитектура, автоматический failover, гарантия доступности от 99.5%.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-tag"><i class="bi bi-question-circle"></i> FAQ</div>
+      <h2 class="section-title mb-4">Частые вопросы</h2>
+      <div class="mb-5">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#fd1" aria-expanded="false">
+            Какие облачные платформы поддерживаете?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="fd1" class="collapse"><div class="faq-answer">AWS, Google Cloud, Azure, Yandex Cloud, Selectel, а также on-premise развёртывание на вашем оборудовании — выбираем исходя из задачи и бюджета.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#fd2" aria-expanded="false">
+            Сколько времени занимает развёртывание?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="fd2" class="collapse"><div class="faq-answer">От 1 дня для простых моделей до 2 недель для сложных распределённых систем. Точные сроки назову после анализа требований.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#fd3" aria-expanded="false">
+            Предоставляете SLA?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="fd3" class="collapse"><div class="faq-answer">Да, оговариваем SLA с гарантией доступности от 99.5% и регламентированным временем реакции на инциденты — фиксируем в договоре.</div></div>
+        </div>
+        <div class="faq-item" style="border-bottom:none">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#fd4" aria-expanded="false">
+            Можно ли масштабировать решение после запуска?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="fd4" class="collapse"><div class="faq-answer">Всегда проектирую с учётом роста нагрузки. Горизонтальное масштабирование — это часть архитектуры, а не доработка постфактум.</div></div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h3>Готовы запустить модель в прод?</h3>
+            <p>Напишите мне в Макс — опишите задачу и расскажите о вашей модели. Отвечу в течение часа в рабочее время.</p>
+            <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-cta-primary">
+              <i class="bi bi-chat-dots"></i> Написать мне
+            </a>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="qr-wrap d-inline-block">
+              <div id="qr-dep"></div>
+              <p class="mt-2 mb-0 small" style="color:var(--muted)">Отсканируйте QR-код</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </main>
 
-<footer class="py-5">
+<footer class="site-footer">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 pb-4">
       <div class="col-12 col-md-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <i class="bi bi-cpu fs-5" style="color:var(--brand)"></i>
-          <span class="brand-name">ИИ-Монолит</span>
-        </div>
-        <p class="small" style="opacity:.6">Комплексные решения на базе искусственного интеллекта.</p>
-        <p class="small" style="opacity:.4">Самозанятый, НПД (4%/6%)</p>
+        <div class="brand"><i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит</div>
+        <p>Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p style="color:rgba(255,255,255,.3);font-size:.8rem">Самозанятый · НПД (4% / 6%)</p>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Навигация</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a href="/">Главная</a></li>
-          <li class="mb-2"><a href="/datasets.html">Датасеты</a></li>
-          <li class="mb-2"><a href="/deployment.html">Развёртывание</a></li>
-          <li class="mb-2"><a href="/finetuning.html">Дообучение</a></li>
-          <li class="mb-2"><a href="/portfolio.html">Портфолио</a></li>
-          <li class="mb-2"><a href="/legal.html">Правовая информация</a></li>
+        <h6>Навигация</h6>
+        <ul class="list-unstyled footer-link-list">
+          <li><a href="/">Главная</a></li>
+          <li><a href="/datasets.html">Датасеты</a></li>
+          <li><a href="/deployment.html">Развёртывание</a></li>
+          <li><a href="/finetuning.html">Дообучение</a></li>
+          <li><a href="/portfolio.html">Направления</a></li>
+          <li><a href="/legal.html">Документы</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Связаться</h6>
-        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2 small" style="color:var(--brand)">
-          <i class="bi bi-chat-dots"></i>Написать в Макс
+        <h6>Связаться</h6>
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" style="color:var(--brand);display:flex;align-items:center;gap:.4rem">
+          <i class="bi bi-chat-dots"></i> Написать в Макс
         </a>
       </div>
     </div>
     <hr />
-    <div class="d-flex flex-column flex-md-row justify-content-between small" style="opacity:.4">
+    <div class="d-flex flex-column flex-md-row justify-content-between copy">
       <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
       <span>НПД</span>
     </div>
@@ -249,9 +252,15 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+    });
+  });
   new QRCode(document.getElementById('qr-dep'), {
     text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
-    width: 120, height: 120, colorDark: '#0f8ec2', colorLight: '#ffffff',
+    width: 128, height: 128, colorDark: '#0e7fc0', colorLight: '#ffffff',
     correctLevel: QRCode.CorrectLevel.M
   });
 </script>
