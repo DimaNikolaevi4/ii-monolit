@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    
+  </defs>
+  
+  
+  <rect width="800" height="900" fill="white"/>
+  
+  
+  <g transform="translate(800, 0) scale(-1, 1)">
+    
+    
+    <path d="M 420 120        C 480 120, 540 140, 580 180       C 620 220, 640 280, 640 340       C 640 400, 630 460, 610 510       C 590 560, 560 600, 520 640       C 480 680, 440 710, 400 730       L 380 780       L 360 820" fill="none" stroke="rgb(26, 58, 107)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    
+    <path d="M 420 120       C 380 125, 340 140, 310 170       C 280 200, 260 240, 250 290       C 240 340, 245 390, 260 440       C 275 490, 300 530, 330 570       C 360 610, 390 640, 420 660" fill="none" stroke="rgb(26, 58, 107)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    
+    <path d="M 430 150 C 470 145, 510 155, 540 175" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 420 180 C 470 175, 520 185, 560 210" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 410 210 C 460 205, 520 215, 570 245" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 400 240 C 450 235, 520 245, 580 280" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 390 270 C 440 265, 520 275, 590 315" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 380 300 C 430 295, 520 305, 600 350" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 370 330 C 420 325, 520 335, 610 385" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 365 360 C 415 355, 520 365, 615 420" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 360 390 C 410 385, 520 395, 615 455" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 360 420 C 410 415, 520 425, 610 490" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 365 450 C 415 445, 520 455, 600 525" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 375 480 C 425 475, 520 485, 585 560" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 390 510 C 440 505, 520 515, 570 595" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 410 540 C 455 535, 520 545, 555 630" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 430 570 C 470 565, 520 575, 540 665" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 450 130 C 455 200, 460 280, 465 360 C 470 440, 475 520, 480 600" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 490 135 C 500 210, 510 290, 515 370 C 520 450, 525 530, 520 610" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 530 145 C 545 220, 560 300, 565 380 C 570 460, 570 540, 560 620" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 570 165 C 590 235, 610 310, 615 390 C 620 470, 615 550, 600 630" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 600 200 C 620 265, 635 335, 635 410 C 635 485, 625 560, 605 640" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 410 125 C 400 195, 390 275, 385 355 C 380 435, 380 515, 390 595" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 370 135 C 355 200, 340 275, 335 350 C 330 425, 335 500, 350 575" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 330 155 C 310 215, 295 285, 290 355 C 285 425, 295 495, 315 565" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 295 185 C 275 240, 265 305, 265 370 C 265 435, 280 500, 305 560" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 560 380        C 580 375, 600 385, 610 400       C 620 415, 620 440, 610 460       C 600 480, 580 490, 565 485       C 550 480, 545 465, 550 450       C 555 435, 565 425, 575 430       C 585 435, 590 450, 585 465       C 580 480, 570 485, 565 480" fill="none" stroke="rgb(26, 58, 107)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    
+    <path d="M 570 400 C 580 405, 585 420, 580 435" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 575 410 C 582 415, 585 425, 582 440" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 565 420 C 572 425, 575 435, 572 450" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 380 730        C 370 760, 365 790, 360 820       L 340 870" fill="none" stroke="rgb(26, 58, 107)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 420 730       C 430 760, 435 790, 440 820       L 460 870" fill="none" stroke="rgb(26, 58, 107)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    
+    <path d="M 375 750 C 390 748, 410 748, 425 750" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 370 780 C 388 778, 412 778, 430 780" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 365 810 C 385 808, 415 808, 435 810" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 355 840 C 380 838, 420 838, 445 840" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    
+    <ellipse cx="520" cy="380" rx="25" ry="18" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 540 400 C 545 420, 548 440, 545 460" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+    
+    <path d="M 480 520 C 500 518, 520 520, 535 525" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M 485 535 C 500 533, 515 535, 530 540" fill="none" stroke="rgb(42, 74, 123)" stroke-width="0.8" stroke-linecap="round"/>
+    
+  </g>
+</svg>
