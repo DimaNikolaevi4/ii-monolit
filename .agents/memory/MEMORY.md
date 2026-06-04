@@ -1,0 +1,1 @@
+- [ИИ-Монолит inner-page design system](inner-page-design.md) — dark theme applied to all 5 inner pages via css/custom.css; custom nav/footer replaced Bootstrap nav.
