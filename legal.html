@@ -3,204 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Правовая информация — ИИ-Монолит</title>
-  <meta name="description" content="Правовая информация ИИ-Монолит: пользовательское соглашение, политика конфиденциальности, условия оказания услуг, реквизиты." />
-  <link rel="icon" href="img/logo.svg" />
+  <title>Документы — ИИ-Монолит</title>
+  <meta name="description" content="Правовая информация ИИ-Монолит: пользовательское соглашение, конфиденциальность, условия оказания услуг, реквизиты." />
+  <link rel="icon" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="/custom.css" />
+  <style>
+    .doc-card { background: #fff; border: 1px solid var(--border); border-radius: .875rem; overflow: hidden; margin-bottom: 1rem; }
+    .doc-header { padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 1rem; }
+    .doc-header:hover { background: var(--surface); }
+    .doc-title { display: flex; align-items: center; gap: .875rem; font-weight: 600; font-size: .95rem; }
+    .doc-icon { width: 2.25rem; height: 2.25rem; border-radius: .5rem; background: var(--brand-light); color: var(--brand); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .doc-chevron { color: var(--muted); transition: transform .25s; flex-shrink: 0; }
+    .doc-header[aria-expanded="true"] .doc-chevron { transform: rotate(180deg); }
+    .doc-body { padding: 0 1.5rem 1.5rem; color: var(--muted); font-size: .9rem; line-height: 1.75; }
+    .doc-body p { margin-bottom: .75rem; }
+    .doc-body p:last-child { margin-bottom: 0; }
+    .reqs-grid { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1.25rem; }
+    .reqs-key { font-weight: 600; color: var(--text); white-space: nowrap; }
+  </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md fixed-top bg-white shadow-sm">
+<nav class="site-nav opaque" id="siteNav">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/" style="color:var(--brand)">
-      <i class="bi bi-cpu fs-4"></i><span>ИИ-Монолит</span>
-    </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list fs-3"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
-        <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-        <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
-        <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
-        <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
-        <li class="nav-item"><a class="nav-link" href="/portfolio.html">Портфолио</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/legal.html">Правовая информация</a></li>
-        <li class="nav-item ms-md-2">
-          <a class="btn btn-brand px-3 py-2 rounded-3" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Связаться</a>
-        </li>
-      </ul>
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит
+      </a>
+      <button class="navbar-toggler border-0 bg-transparent p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list fs-3" style="color:var(--text)"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
+          <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
+          <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
+          <li class="nav-item"><a class="nav-link" href="/portfolio.html">Направления</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/legal.html">Документы</a></li>
+          <li class="nav-item ms-md-2">
+            <a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Обсудить проект</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 
 <section class="page-hero">
-  <div class="container">
-    <h1 class="display-5 fw-bold mb-3">Правовая информация</h1>
-    <p class="fs-5 mb-0" style="opacity:.88;max-width:680px">Правовые документы, регулирующие использование сайта и услуг ИИ-Монолит.</p>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-tag"><i class="bi bi-file-earmark-text"></i> Правовая информация</div>
+    <h1>Документы</h1>
+    <p>Условия работы, политика конфиденциальности и реквизиты для оформления договора.</p>
+    <div class="page-hero-divider"></div>
   </div>
 </section>
 
-<main class="py-5">
-  <div class="container py-3" style="max-width:800px">
+<main>
+  <div class="container py-5">
+    <div class="py-3" style="max-width:780px">
 
-    <div class="accordion" id="legalAccordion">
-
-      <!-- Пользовательское соглашение -->
-      <div class="accordion-item border rounded-3 mb-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l1">
-            <i class="bi bi-file-text me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Пользовательское соглашение</span>
-          </button>
-        </h2>
-        <div id="l1" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p>Используя данный сайт, вы соглашаетесь с настоящим Пользовательским соглашением. Сайт предназначен исключительно для информирования о услугах ИИ-Монолит.</p>
-            <p>Запрещается использовать сайт в незаконных целях, нарушать права третьих лиц, распространять вредоносное программное обеспечение. Владелец сайта оставляет за собой право изменять содержимое без предварительного уведомления.</p>
-            <p class="mb-0">Все материалы сайта защищены авторским правом. Копирование и распространение без письменного разрешения запрещено.</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d1" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-file-text"></i></div>
+            Пользовательское соглашение
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d1" class="collapse">
+          <div class="doc-body">
+            <p>Используя данный сайт, вы соглашаетесь с настоящим соглашением. Сайт предназначен для информирования об услугах ИИ-Монолит.</p>
+            <p>Запрещается использовать сайт в незаконных целях, нарушать права третьих лиц или распространять вредоносное программное обеспечение. Содержимое сайта может изменяться без предварительного уведомления.</p>
+            <p>Все материалы защищены авторским правом. Копирование без письменного разрешения запрещено.</p>
           </div>
         </div>
       </div>
 
-      <!-- Политика конфиденциальности -->
-      <div class="accordion-item border rounded-3 mb-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l2">
-            <i class="bi bi-shield-lock me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Политика конфиденциальности</span>
-          </button>
-        </h2>
-        <div id="l2" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p>ИИ-Монолит обязуется защищать персональные данные пользователей в соответствии с Федеральным законом №152-ФЗ «О персональных данных».</p>
-            <p>Мы собираем только данные, необходимые для оказания услуг. Ваши данные не передаются третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством РФ.</p>
-            <p>При работе над проектами клиентов мы подписываем NDA и обеспечиваем конфиденциальность предоставленных данных на всех этапах сотрудничества.</p>
-            <p class="mb-0">Вы вправе запросить доступ, исправление или удаление своих персональных данных, обратившись к нам через контактную форму.</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d2" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-shield-lock"></i></div>
+            Политика конфиденциальности
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d2" class="collapse">
+          <div class="doc-body">
+            <p>Персональные данные обрабатываются в соответствии с Федеральным законом №152-ФЗ «О персональных данных».</p>
+            <p>Собираю только данные, необходимые для оказания услуг. Ваши данные не передаются третьим лицам без вашего согласия, кроме случаев, предусмотренных законодательством РФ.</p>
+            <p>При работе над проектами подписываю NDA — информация о проекте остаётся конфиденциальной на всех этапах.</p>
+            <p>Вы вправе запросить доступ, исправление или удаление своих персональных данных, написав мне напрямую.</p>
           </div>
         </div>
       </div>
 
-      <!-- Условия оказания услуг -->
-      <div class="accordion-item border rounded-3 mb-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l3">
-            <i class="bi bi-briefcase me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Условия оказания услуг</span>
-          </button>
-        </h2>
-        <div id="l3" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p>Услуги оказываются на основании договора возмездного оказания услуг. Перед началом работы стороны согласовывают техническое задание, сроки и стоимость.</p>
-            <p>Оплата осуществляется поэтапно: аванс 50% при подписании договора, оставшиеся 50% по факту передачи результатов. Для юридических лиц и ИП возможна оплата по счёту.</p>
-            <p>Исполнитель применяет специальный налоговый режим «Налог на профессиональный доход» (НПД). Чек формируется через приложение «Мой налог».</p>
-            <p class="mb-0">Результаты работ передаются заказчику после полной оплаты. Гарантийный период составляет 30 дней с момента передачи.</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d3" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-briefcase"></i></div>
+            Условия оказания услуг
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d3" class="collapse">
+          <div class="doc-body">
+            <p>Услуги оказываются на основании договора возмездного оказания услуг. До начала работы согласовываем техническое задание, сроки и стоимость.</p>
+            <p>Оплата поэтапно: 50% аванс при подписании договора, 50% по факту передачи результатов. Для юридических лиц и ИП — оплата по счёту.</p>
+            <p>Применяю специальный налоговый режим НПД. Чек формирую через приложение «Мой налог» сразу после каждого платежа.</p>
+            <p>Результаты передаются после полной оплаты. Гарантийный период — 30 дней с момента передачи.</p>
           </div>
         </div>
       </div>
 
-      <!-- Реквизиты -->
-      <div class="accordion-item border rounded-3 mb-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l4">
-            <i class="bi bi-card-text me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Реквизиты</span>
-          </button>
-        </h2>
-        <div id="l4" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p><strong>Наименование:</strong> ИИ-Монолит (самозанятый)</p>
-            <p><strong>Налоговый режим:</strong> Специальный налоговый режим «Налог на профессиональный доход» (НПД)</p>
-            <p><strong>Налоговая ставка:</strong> 4% (физ. лица) / 6% (юр. лица и ИП)</p>
-            <p class="mb-0"><strong>Чек:</strong> Формируется через приложение «Мой налог» при каждом платеже</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d4" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-card-list"></i></div>
+            Реквизиты
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d4" class="collapse">
+          <div class="doc-body">
+            <div class="reqs-grid">
+              <span class="reqs-key">Наименование</span><span>ИИ-Монолит (самозанятый)</span>
+              <span class="reqs-key">Налоговый режим</span><span>НПД (Налог на профессиональный доход)</span>
+              <span class="reqs-key">Ставка</span><span>4% — физические лица, 6% — юридические лица и ИП</span>
+              <span class="reqs-key">Чек</span><span>Формируется через приложение «Мой налог» при каждом платеже</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Ограничение ответственности -->
-      <div class="accordion-item border rounded-3 mb-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l5">
-            <i class="bi bi-exclamation-triangle me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Ограничение ответственности</span>
-          </button>
-        </h2>
-        <div id="l5" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p>ИИ-Монолит не несёт ответственности за прямые или косвенные убытки, связанные с использованием результатов работ способами, не предусмотренными техническим заданием.</p>
-            <p>Точность результатов работы ИИ-моделей зависит от качества и объёма предоставленных заказчиком данных. Мы гарантируем соответствие результатов согласованным в ТЗ метрикам качества.</p>
-            <p class="mb-0">Максимальный размер ответственности ограничен суммой, уплаченной заказчиком за конкретный проект.</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d5" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-exclamation-triangle"></i></div>
+            Ограничение ответственности
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d5" class="collapse">
+          <div class="doc-body">
+            <p>Не несу ответственности за убытки, связанные с использованием результатов работ способами, не предусмотренными техническим заданием.</p>
+            <p>Точность ИИ-моделей зависит от качества и объёма предоставленных данных. Гарантирую соответствие результатов метрикам, зафиксированным в ТЗ.</p>
+            <p>Максимальный размер ответственности ограничен суммой, уплаченной за конкретный проект.</p>
           </div>
         </div>
       </div>
 
-      <!-- Применимое право -->
-      <div class="accordion-item border rounded-3">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#l6">
-            <i class="bi bi-balance-scale me-3" style="color:var(--brand)"></i>
-            <span class="fw-semibold">Применимое право и споры</span>
-          </button>
-        </h2>
-        <div id="l6" class="accordion-collapse collapse" data-bs-parent="#legalAccordion">
-          <div class="accordion-body text-muted">
-            <p>Отношения между сторонами регулируются законодательством Российской Федерации.</p>
-            <p>Все споры решаются путём переговоров. В случае невозможности достичь соглашения — в судебном порядке по месту нахождения исполнителя.</p>
-            <p class="mb-0">Претензионный порядок урегулирования споров является обязательным. Срок рассмотрения претензии — 10 рабочих дней.</p>
+      <div class="doc-card">
+        <div class="doc-header" data-bs-toggle="collapse" data-bs-target="#d6" aria-expanded="false">
+          <div class="doc-title">
+            <div class="doc-icon"><i class="bi bi-scale"></i></div>
+            Применимое право и споры
+          </div>
+          <i class="bi bi-chevron-down doc-chevron"></i>
+        </div>
+        <div id="d6" class="collapse">
+          <div class="doc-body">
+            <p>Отношения регулируются законодательством Российской Федерации.</p>
+            <p>Все споры решаем путём переговоров. При невозможности — в судебном порядке по месту нахождения исполнителя.</p>
+            <p>Претензионный порядок обязателен. Срок рассмотрения претензии — 10 рабочих дней.</p>
           </div>
         </div>
       </div>
+
+      <p class="text-center mt-5 small" style="color:var(--muted)">
+        ИИ-Монолит — самозанятый, специальный налоговый режим НПД · Ставка 4%/6% · Чек через «Мой налог»
+      </p>
 
     </div>
-
-    <hr class="my-5" />
-
-    <div class="text-center text-muted small">
-      <p>ИИ-Монолит — самозанятый, применяет специальный налоговый режим НПД.</p>
-      <p class="mb-0">Налоговая ставка: 4% (физ. лица) / 6% (юр. лица и ИП). Чек формируется через приложение «Мой налог».</p>
-    </div>
-
   </div>
 </main>
 
-<footer class="py-5">
+<footer class="site-footer">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 pb-4">
       <div class="col-12 col-md-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <i class="bi bi-cpu fs-5" style="color:var(--brand)"></i>
-          <span class="brand-name">ИИ-Монолит</span>
-        </div>
-        <p class="small" style="opacity:.6">Комплексные решения на базе искусственного интеллекта.</p>
-        <p class="small" style="opacity:.4">Самозанятый, НПД (4%/6%)</p>
+        <div class="brand"><i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит</div>
+        <p>Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p style="color:rgba(255,255,255,.3);font-size:.8rem">Самозанятый · НПД (4% / 6%)</p>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Навигация</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a href="/">Главная</a></li>
-          <li class="mb-2"><a href="/datasets.html">Датасеты</a></li>
-          <li class="mb-2"><a href="/deployment.html">Развёртывание</a></li>
-          <li class="mb-2"><a href="/finetuning.html">Дообучение</a></li>
-          <li class="mb-2"><a href="/portfolio.html">Портфолио</a></li>
-          <li class="mb-2"><a href="/legal.html">Правовая информация</a></li>
+        <h6>Навигация</h6>
+        <ul class="list-unstyled footer-link-list">
+          <li><a href="/">Главная</a></li>
+          <li><a href="/datasets.html">Датасеты</a></li>
+          <li><a href="/deployment.html">Развёртывание</a></li>
+          <li><a href="/finetuning.html">Дообучение</a></li>
+          <li><a href="/portfolio.html">Направления</a></li>
+          <li><a href="/legal.html">Документы</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Связаться</h6>
-        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2 small" style="color:var(--brand)">
-          <i class="bi bi-chat-dots"></i>Написать в Макс
+        <h6>Связаться</h6>
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" style="color:var(--brand);display:flex;align-items:center;gap:.4rem">
+          <i class="bi bi-chat-dots"></i> Написать в Макс
         </a>
       </div>
     </div>
     <hr />
-    <div class="d-flex flex-column flex-md-row justify-content-between small" style="opacity:.4">
+    <div class="d-flex flex-column flex-md-row justify-content-between copy">
       <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
-      <span>Специальный налоговый режим «Налог на профессиональный доход» (НПД)</span>
+      <span>НПД</span>
     </div>
   </div>
 </footer>
@@ -208,6 +220,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.doc-header').forEach(h => {
+    h.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+    });
+  });
 </script>
 </body>
 </html>

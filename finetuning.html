@@ -4,244 +4,244 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Дообучение ИИ — ИИ-Монолит</title>
-  <meta name="description" content="Дообучение ИИ-моделей: LoRA, QLoRA, RLHF, DPO, полное fine-tuning под ваши задачи." />
-  <link rel="icon" href="img/logo.svg" />
+  <meta name="description" content="Адаптирую ИИ-модели под вашу предметную область: LoRA, QLoRA, RLHF, DPO. Оцениваю результат по метрикам." />
+  <link rel="icon" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="/custom.css" />
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md fixed-top bg-white shadow-sm">
+<nav class="site-nav opaque" id="siteNav">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/" style="color:var(--brand)">
-      <i class="bi bi-cpu fs-4"></i><span>ИИ-Монолит</span>
-    </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list fs-3"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
-        <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-        <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
-        <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/finetuning.html">Дообучение</a></li>
-        <li class="nav-item"><a class="nav-link" href="/portfolio.html">Портфолио</a></li>
-        <li class="nav-item"><a class="nav-link" href="/legal.html">Правовая информация</a></li>
-        <li class="nav-item ms-md-2">
-          <a class="btn btn-brand px-3 py-2 rounded-3" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Связаться</a>
-        </li>
-      </ul>
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит
+      </a>
+      <button class="navbar-toggler border-0 bg-transparent p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list fs-3" style="color:var(--text)"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
+          <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/finetuning.html">Дообучение</a></li>
+          <li class="nav-item"><a class="nav-link" href="/portfolio.html">Направления</a></li>
+          <li class="nav-item"><a class="nav-link" href="/legal.html">Документы</a></li>
+          <li class="nav-item ms-md-2">
+            <a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Обсудить проект</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 
 <section class="page-hero">
-  <div class="container">
-    <span class="badge mb-3 px-3 py-2 rounded-pill" style="background:rgba(255,255,255,.18);color:#fff">
-      <i class="bi bi-stars me-1"></i>Коммерческое предложение
-    </span>
-    <h1 class="display-5 fw-bold mb-3">Дообучение ИИ-моделей</h1>
-    <p class="fs-5 mb-0" style="opacity:.88;max-width:680px">Готовая модель не решает вашу задачу «из коробки»? Адаптируем под вашу предметную область: LoRA, QLoRA, RLHF, DPO.</p>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-tag"><i class="bi bi-stars"></i> Услуга</div>
+    <h1>Дообучение ИИ-моделей</h1>
+    <p>Базовая модель не решает вашу задачу «из коробки»? Адаптирую под вашу предметную область — быстро и с измеримым результатом.</p>
+    <div class="page-hero-divider"></div>
   </div>
 </section>
 
-<main class="py-5">
-  <div class="container py-3">
+<main>
+  <div class="container py-5">
+    <div class="py-3">
 
-    <p class="text-muted fs-5 mb-2" style="max-width:760px">
-      Используем передовые методы: LoRA, QLoRA, RLHF, DPO, quantization-aware training. Работаем с LLM, моделями компьютерного зрения, рекомендательными системами и поисковыми моделями.
-    </p>
-    <p class="text-muted mb-5" style="max-width:760px">
-      Каждый проект сопровождается детальной оценкой — вы увидите объективное улучшение по метрикам и результатам экспертной проверки.
-    </p>
+      <p class="section-lead mb-5">
+        Использую передовые методы: LoRA, QLoRA, RLHF, DPO, quantization-aware training. Работаю с LLM, моделями CV и поисковыми системами. Фиксирую метрики качества до начала — принимаете по конкретным цифрам, а не ощущениям.
+      </p>
 
-    <h2 class="fw-bold mb-4">Что входит в услугу</h2>
-    <div class="row g-3 mb-5">
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-layers fs-4"></i></div>
-          <h6 class="fw-bold">LoRA / QLoRA</h6>
-          <p class="small text-muted mb-0">Быстрая и эффективная адаптация с минимальными ресурсами</p>
+      <div class="section-tag"><i class="bi bi-list-check"></i> Состав услуги</div>
+      <h2 class="section-title mb-4">Что входит</h2>
+      <div class="row g-3 mb-5">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-layers"></i></div>
+            <h6>LoRA / QLoRA</h6>
+            <p>Эффективная адаптация с минимальными вычислительными ресурсами и быстрым стартом.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-braces-asterisk fs-4"></i></div>
-          <h6 class="fw-bold">Полное дообучение</h6>
-          <p class="small text-muted mb-0">Глубокая адаптация всех параметров для сложных задач</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-cpu"></i></div>
+            <h6>Полное дообучение</h6>
+            <p>Глубокая адаптация всех параметров модели для сложных специализированных задач.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-graph-up fs-4"></i></div>
-          <h6 class="fw-bold">Оценка качества</h6>
-          <p class="small text-muted mb-0">Автоматические метрики, бенчмарки, экспертная оценка</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+            <h6>Оценка качества</h6>
+            <p>Автоматические метрики, бенчмарки, экспертная оценка на тестовой выборке.</p>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100">
-          <div class="icon-wrap mb-3"><i class="bi bi-gear fs-4"></i></div>
-          <h6 class="fw-bold">Оптимизация</h6>
-          <p class="small text-muted mb-0">Квантование, дистилляция, прунинг для эффективного инференса</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Процесс работы</h2>
-    <div class="steps-wrapper mb-5">
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">1</div>
-        <div>
-          <h6 class="fw-bold mb-1">Постановка задачи</h6>
-          <p class="text-muted small mb-0">Определяем целевую метрику, анализируем текущую производительность базовой модели и выбираем оптимальную стратегию дообучения.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">2</div>
-        <div>
-          <h6 class="fw-bold mb-1">Подготовка датасета</h6>
-          <p class="text-muted small mb-0">Помогаем собрать и разметить обучающие данные, формируем train/val/test разбивку, проводим аугментацию при необходимости.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">3</div>
-        <div>
-          <h6 class="fw-bold mb-1">Дообучение</h6>
-          <p class="text-muted small mb-0">Проводим эксперименты с гиперпараметрами, логируем метрики, применяем выбранный метод (LoRA, полное FT, RLHF и т.д.).</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">4</div>
-        <div>
-          <h6 class="fw-bold mb-1">Оценка результата</h6>
-          <p class="text-muted small mb-0">Автоматические метрики (accuracy, F1, BLEU и др.), экспертная оценка на тестовом наборе, A/B тестирование в продакшене.</p>
-        </div>
-      </div>
-      <div class="d-flex gap-3 gap-md-4 mb-4 align-items-start">
-        <div class="step-circle">5</div>
-        <div>
-          <h6 class="fw-bold mb-1">Передача модели</h6>
-          <p class="text-muted small mb-0">Предоставляем веса модели, описание конфигурации, инструкции по инференсу и рекомендации по дальнейшему улучшению.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Преимущества</h2>
-    <div class="row g-4 mb-5">
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-bullseye fs-3"></i></div>
-          <h6 class="fw-bold">Целевые метрики</h6>
-          <p class="small text-muted mb-0">Работаем на ваши бизнес-метрики, а не абстрактные бенчмарки.</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-speedometer2 fs-3"></i></div>
-          <h6 class="fw-bold">Быстрый старт</h6>
-          <p class="small text-muted mb-0">LoRA позволяет получить первые результаты уже через несколько дней.</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 border-0 shadow-sm h-100 text-center">
-          <div class="icon-wrap mx-auto mb-3" style="width:3.5rem;height:3.5rem"><i class="bi bi-transparency fs-3"></i></div>
-          <h6 class="fw-bold">Прозрачность</h6>
-          <p class="small text-muted mb-0">Полная отчётность по экспериментам, метрикам и принятым решениям.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="fw-bold mb-4">Часто задаваемые вопросы</h2>
-    <div class="accordion mb-5" id="faqFT">
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#ff1">С какими моделями вы работаете?</button>
-        </h2>
-        <div id="ff1" class="accordion-collapse collapse" data-bs-parent="#faqFT">
-          <div class="accordion-body px-0 text-muted">LLaMA, Mistral, GPT-серия, Gemma, Qwen, а также модели CV (ViT, YOLO, SAM) и специализированные модели под ваши задачи.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#ff2">Нужен ли у меня собственный датасет?</button>
-        </h2>
-        <div id="ff2" class="accordion-collapse collapse" data-bs-parent="#faqFT">
-          <div class="accordion-body px-0 text-muted">Не обязательно. Мы можем помочь собрать и разметить данные. Если данные есть, мы оценим их качество и подготовим к обучению.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0 border-bottom">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#ff3">Как оценивается результат?</button>
-        </h2>
-        <div id="ff3" class="accordion-collapse collapse" data-bs-parent="#faqFT">
-          <div class="accordion-body px-0 text-muted">Автоматические метрики (accuracy, F1, BLEU и др.), экспертная оценка на тестовом наборе, A/B тестирование в продакшене.</div>
-        </div>
-      </div>
-      <div class="accordion-item border-0">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#ff4">Сколько занимает дообучение?</button>
-        </h2>
-        <div id="ff4" class="accordion-collapse collapse" data-bs-parent="#faqFT">
-          <div class="accordion-body px-0 text-muted">От 3–5 дней для LoRA/QLoRA до нескольких недель для полного дообучения больших моделей. Зависит от размера модели и объёма данных.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-card p-4 p-md-5">
-      <div class="row align-items-center g-4">
-        <div class="col-12 col-md-7">
-          <h3 class="fw-bold mb-2">Обсудим дообучение вашей модели?</h3>
-          <p class="text-muted mb-4">Напишите нам в приватный чат в Макс — ответим в течение часа</p>
-          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn btn-brand btn-lg px-4">
-            <i class="bi bi-chat-dots me-2"></i>Написать в Макс
-          </a>
-        </div>
-        <div class="col-12 col-md-5 text-center">
-          <div class="qr-wrap d-inline-block">
-            <div id="qr-ft"></div>
-            <p class="mb-0 mt-2 small text-muted">Отсканируйте QR-код</p>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feat-card">
+            <div class="icon-box"><i class="bi bi-gear-wide-connected"></i></div>
+            <h6>Оптимизация</h6>
+            <p>Квантование, дистилляция, прунинг — делаю модель быстрее и дешевле в инференсе.</p>
           </div>
         </div>
       </div>
+
+      <div class="section-tag"><i class="bi bi-signpost-2"></i> Как работаю</div>
+      <h2 class="section-title mb-4">Процесс</h2>
+      <div class="row g-0 mb-5">
+        <div class="col-lg-8">
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h6>Постановка задачи</h6>
+              <p>Определяю целевую метрику, анализирую производительность базовой модели, выбираю оптимальную стратегию дообучения.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h6>Подготовка данных</h6>
+              <p>Помогаю собрать и разметить обучающие данные, формирую train/val/test разбивку, провожу аугментацию при необходимости.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h6>Дообучение</h6>
+              <p>Провожу эксперименты с гиперпараметрами, логирую метрики, применяю выбранный метод — LoRA, полное FT, RLHF или DPO.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h6>Оценка результата</h6>
+              <p>Автоматические метрики (accuracy, F1, BLEU и др.), экспертная оценка на тестовом наборе — сравниваем с исходными показателями.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h6>Передача модели</h6>
+              <p>Передаю веса, конфигурацию и инструкции по инференсу. При необходимости — разворачиваю в прод.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-tag"><i class="bi bi-person-check"></i> Почему выбирают меня</div>
+      <h2 class="section-title mb-4">Мои преимущества</h2>
+      <div class="row g-4 mb-5">
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-bullseye"></i></div>
+            <h6>Бизнес-метрики</h6>
+            <p>Работаю на ваши показатели, а не абстрактные бенчмарки — фиксируем цели до старта.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-clock-history"></i></div>
+            <h6>Быстрый старт</h6>
+            <p>С LoRA первые результаты — уже через несколько дней. Быстро итерируем по гипотезам.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="why-card">
+            <div class="icon-box"><i class="bi bi-file-earmark-bar-graph"></i></div>
+            <h6>Прозрачная отчётность</h6>
+            <p>Предоставляю полный отчёт по экспериментам, метрикам и принятым решениям.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-tag"><i class="bi bi-question-circle"></i> FAQ</div>
+      <h2 class="section-title mb-4">Частые вопросы</h2>
+      <div class="mb-5">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#ff1" aria-expanded="false">
+            С какими моделями работаете?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="ff1" class="collapse"><div class="faq-answer">LLaMA, Mistral, Gemma, Qwen, GPT-серия, а также модели CV (ViT, YOLO, SAM) и специализированные архитектуры под конкретные задачи.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#ff2" aria-expanded="false">
+            Нужен ли собственный датасет?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="ff2" class="collapse"><div class="faq-answer">Не обязательно — могу помочь собрать и разметить данные. Если данные уже есть, оценю их качество и подготовлю к обучению.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#ff3" aria-expanded="false">
+            Как оценивается результат?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="ff3" class="collapse"><div class="faq-answer">Автоматические метрики (accuracy, F1, BLEU и др.) + экспертная оценка на тестовой выборке. Целевые значения фиксируем в ТЗ до начала работы.</div></div>
+        </div>
+        <div class="faq-item" style="border-bottom:none">
+          <button class="faq-btn" type="button" data-bs-toggle="collapse" data-bs-target="#ff4" aria-expanded="false">
+            Сколько занимает дообучение?
+            <i class="bi bi-plus faq-icon"></i>
+          </button>
+          <div id="ff4" class="collapse"><div class="faq-answer">От 3–5 дней для LoRA/QLoRA до нескольких недель для полного дообучения больших моделей. Зависит от размера модели и объёма данных.</div></div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h3>Нужна адаптация модели?</h3>
+            <p>Напишите мне в Макс — опишите задачу, скажите какая базовая модель и какой результат ожидаете. Отвечу в течение часа.</p>
+            <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-cta-primary">
+              <i class="bi bi-chat-dots"></i> Написать мне
+            </a>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="qr-wrap d-inline-block">
+              <div id="qr-ft"></div>
+              <p class="mt-2 mb-0 small" style="color:var(--muted)">Отсканируйте QR-код</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </main>
 
-<footer class="py-5">
+<footer class="site-footer">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 pb-4">
       <div class="col-12 col-md-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <i class="bi bi-cpu fs-5" style="color:var(--brand)"></i>
-          <span class="brand-name">ИИ-Монолит</span>
-        </div>
-        <p class="small" style="opacity:.6">Комплексные решения на базе искусственного интеллекта.</p>
-        <p class="small" style="opacity:.4">Самозанятый, НПД (4%/6%)</p>
+        <div class="brand"><i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит</div>
+        <p>Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p style="color:rgba(255,255,255,.3);font-size:.8rem">Самозанятый · НПД (4% / 6%)</p>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Навигация</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a href="/">Главная</a></li>
-          <li class="mb-2"><a href="/datasets.html">Датасеты</a></li>
-          <li class="mb-2"><a href="/deployment.html">Развёртывание</a></li>
-          <li class="mb-2"><a href="/finetuning.html">Дообучение</a></li>
-          <li class="mb-2"><a href="/portfolio.html">Портфолио</a></li>
-          <li class="mb-2"><a href="/legal.html">Правовая информация</a></li>
+        <h6>Навигация</h6>
+        <ul class="list-unstyled footer-link-list">
+          <li><a href="/">Главная</a></li>
+          <li><a href="/datasets.html">Датасеты</a></li>
+          <li><a href="/deployment.html">Развёртывание</a></li>
+          <li><a href="/finetuning.html">Дообучение</a></li>
+          <li><a href="/portfolio.html">Направления</a></li>
+          <li><a href="/legal.html">Документы</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Связаться</h6>
-        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2 small" style="color:var(--brand)">
-          <i class="bi bi-chat-dots"></i>Написать в Макс
+        <h6>Связаться</h6>
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" style="color:var(--brand);display:flex;align-items:center;gap:.4rem">
+          <i class="bi bi-chat-dots"></i> Написать в Макс
         </a>
       </div>
     </div>
     <hr />
-    <div class="d-flex flex-column flex-md-row justify-content-between small" style="opacity:.4">
+    <div class="d-flex flex-column flex-md-row justify-content-between copy">
       <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
       <span>НПД</span>
     </div>
@@ -252,9 +252,15 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+    });
+  });
   new QRCode(document.getElementById('qr-ft'), {
     text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
-    width: 120, height: 120, colorDark: '#0f8ec2', colorLight: '#ffffff',
+    width: 128, height: 128, colorDark: '#0e7fc0', colorLight: '#ffffff',
     correctLevel: QRCode.CorrectLevel.M
   });
 </script>

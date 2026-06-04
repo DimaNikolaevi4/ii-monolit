@@ -3,173 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ИИ-Монолит — Решения на базе искусственного интеллекта</title>
-  <meta name="description" content="ИИ-Монолит — комплексные решения на базе искусственного интеллекта: создание датасетов, развёртывание моделей, дообучение ИИ." />
-  <link rel="icon" href="img/logo.svg" />
+  <title>ИИ-Монолит — Разработка ИИ-решений</title>
+  <meta name="description" content="Фриланс-разработчик ИИ: создание датасетов, развёртывание моделей, дообучение. Работаю под NDA как самозанятый." />
+  <link rel="icon" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="/custom.css" />
 </head>
 <body>
 
-<!-- ── Navbar ─────────────────────────────────── -->
-<nav class="navbar navbar-expand-md fixed-top bg-transparent" id="mainNav">
+<nav class="site-nav hero-nav" id="siteNav">
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-white" href="/">
-      <i class="bi bi-cpu fs-4" style="color:#fff"></i>
-      <span>ИИ-Монолит</span>
-    </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list text-white fs-3"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
-        <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
-        <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
-        <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
-        <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
-        <li class="nav-item"><a class="nav-link" href="/portfolio.html">Портфолио</a></li>
-        <li class="nav-item"><a class="nav-link" href="/legal.html">Правовая информация</a></li>
-        <li class="nav-item ms-md-2">
-          <a class="btn btn-brand px-3 py-2 rounded-3" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Связаться</a>
-        </li>
-      </ul>
+    <div class="d-flex align-items-center justify-content-between">
+      <a class="navbar-brand" href="/" style="color:#fff;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.5rem">
+        <i class="bi bi-cpu-fill" style="color:rgba(255,255,255,.7)"></i> ИИ‑Монолит
+      </a>
+      <button class="navbar-toggler border-0 bg-transparent p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="color:#fff">
+        <i class="bi bi-list fs-3"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+          <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
+          <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
+          <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
+          <li class="nav-item"><a class="nav-link" href="/portfolio.html">Направления</a></li>
+          <li class="nav-item"><a class="nav-link" href="/legal.html">Документы</a></li>
+          <li class="nav-item ms-md-2">
+            <a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Обсудить проект</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- ── Hero ───────────────────────────────────── -->
+<!-- ── Hero ─────────────────────────────────── -->
 <section class="hero-section">
   <div class="hero-overlay"></div>
-  <div class="container hero-content text-center text-white py-5">
-    <i class="bi bi-cpu display-3 mb-3 d-block"></i>
-    <h1 class="display-3 fw-bold mb-3">ИИ-Монолит</h1>
-    <p class="fs-4 mb-2" style="opacity:.9">Комплексные решения на базе искусственного интеллекта для вашего бизнеса</p>
-    <p class="fs-5 mb-5" style="opacity:.75">Создаём датасеты, развёртываем модели, дообучаем ИИ — полный цикл от идеи до продакшена</p>
-
-    <div class="row g-3 justify-content-center mb-5">
-      <div class="col-12 col-md-4">
-        <a href="/datasets.html" class="hero-card h-100">
-          <i class="bi bi-database fs-2 mb-3 d-block"></i>
-          <h5 class="fw-bold mb-2">Создание датасетов</h5>
-          <p class="mb-0 small" style="opacity:.85">Сбор, разметка и валидация данных для обучения ИИ-моделей</p>
-        </a>
-      </div>
-      <div class="col-12 col-md-4">
-        <a href="/deployment.html" class="hero-card h-100">
-          <i class="bi bi-cloud-arrow-up fs-2 mb-3 d-block"></i>
-          <h5 class="fw-bold mb-2">Развёртывание моделей</h5>
-          <p class="mb-0 small" style="opacity:.85">Инфраструктура, API и мониторинг для ваших ИИ-решений</p>
-        </a>
-      </div>
-      <div class="col-12 col-md-4">
-        <a href="/finetuning.html" class="hero-card h-100">
-          <i class="bi bi-stars fs-2 mb-3 d-block"></i>
-          <h5 class="fw-bold mb-2">Дообучение ИИ</h5>
-          <p class="mb-0 small" style="opacity:.85">Адаптация моделей под ваши задачи с помощью LoRA и полного дообучения</p>
-        </a>
-      </div>
-    </div>
-
-    <a href="/datasets.html" class="btn btn-outline-light btn-lg px-4 me-2">Узнать больше</a>
-    <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn btn-brand btn-lg px-4">
-      <i class="bi bi-chat-dots me-2"></i>Написать нам
-    </a>
-
-    <div class="mt-5">
-      <i class="bi bi-chevron-down fs-3 scroll-arrow" style="opacity:.6"></i>
-    </div>
-  </div>
-</section>
-
-<!-- ── Why us ──────────────────────────────────── -->
-<section class="py-5 bg-white">
-  <div class="container py-4">
-    <div class="row g-4 justify-content-center text-center">
-      <div class="col-12 col-md-4">
-        <div class="p-4">
-          <div class="display-6 fw-bold mb-2" style="color:var(--brand)">100%</div>
-          <div class="text-muted">Контроль качества на каждом этапе</div>
+  <div class="container hero-content py-5" style="padding-top:6rem!important">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <div class="hero-eyebrow">
+          <i class="bi bi-patch-check-fill"></i> Самозанятый · ИИ-разработчик
+        </div>
+        <h1 class="hero-title">ИИ под ключ —<br>от данных до прода</h1>
+        <p class="hero-sub">Создаю датасеты, дообучаю языковые модели и разворачиваю ИИ-сервисы в продакшен. Работаю индивидуально, подписываю NDA, отвечаю за результат.</p>
+        <div class="hero-btns">
+          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-hero-primary">
+            <i class="bi bi-chat-dots"></i> Написать мне
+          </a>
+          <a href="/portfolio.html" class="btn-hero-ghost">Направления работы</a>
         </div>
       </div>
-      <div class="col-12 col-md-4">
-        <div class="p-4">
-          <div class="display-6 fw-bold mb-2" style="color:var(--brand)">NDA</div>
-          <div class="text-muted">Полная конфиденциальность ваших данных</div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="p-4">
-          <div class="display-6 fw-bold mb-2" style="color:var(--brand)">Full cycle</div>
-          <div class="text-muted">От идеи до production-ready решения</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Services overview ───────────────────────── -->
-<section class="py-5 bg-light">
-  <div class="container py-4">
-    <h2 class="fw-bold mb-2">Наши услуги</h2>
-    <p class="text-muted mb-5 fs-5">Полный спектр решений в области искусственного интеллекта</p>
-    <div class="row g-4">
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 h-100 border-0 shadow-sm">
-          <div class="icon-wrap mb-3"><i class="bi bi-database fs-4"></i></div>
-          <h5 class="fw-bold">Создание датасетов</h5>
-          <p class="text-muted mb-3">Сбор, разметка и валидация данных. Работаем с текстовыми, визуальными, аудио и мультимодальными данными.</p>
-          <a href="/datasets.html" class="btn btn-outline-brand btn-sm rounded-3 mt-auto">Подробнее →</a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 h-100 border-0 shadow-sm">
-          <div class="icon-wrap mb-3"><i class="bi bi-cloud-upload fs-4"></i></div>
-          <h5 class="fw-bold">Развёртывание моделей</h5>
-          <p class="text-muted mb-3">Docker, Kubernetes, CI/CD, мониторинг. Любые облачные провайдеры и on-premise решения с SLA от 99.5%.</p>
-          <a href="/deployment.html" class="btn btn-outline-brand btn-sm rounded-3 mt-auto">Подробнее →</a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card feature-card p-4 h-100 border-0 shadow-sm">
-          <div class="icon-wrap mb-3"><i class="bi bi-magic fs-4"></i></div>
-          <h5 class="fw-bold">Дообучение ИИ</h5>
-          <p class="text-muted mb-3">LoRA, QLoRA, RLHF, DPO. Адаптируем модели под вашу предметную область, стиль и требования к качеству.</p>
-          <a href="/finetuning.html" class="btn btn-outline-brand btn-sm rounded-3 mt-auto">Подробнее →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Portfolio CTA ───────────────────────────── -->
-<section class="py-5 bg-white">
-  <div class="container py-3 text-center">
-    <h2 class="fw-bold mb-3">Наша экспертиза</h2>
-    <p class="text-muted mb-4 fs-5 mx-auto" style="max-width:600px">NLP, компьютерное зрение, рекомендательные системы, голосовые технологии — создаём ИИ под ключ.</p>
-    <a href="/portfolio.html" class="btn btn-brand btn-lg px-4">Смотреть портфолио →</a>
-  </div>
-</section>
-
-<!-- ── Contact CTA ─────────────────────────────── -->
-<section class="py-5" style="background:var(--brand-light)">
-  <div class="container py-3">
-    <div class="cta-card p-4 p-md-5">
-      <div class="row align-items-center g-4">
-        <div class="col-12 col-md-7">
-          <h3 class="fw-bold mb-2">Обсудим ваш проект?</h3>
-          <p class="text-muted mb-4">Напишите нам в приватный чат в Макс — ответим в течение часа в рабочее время</p>
-          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn btn-brand btn-lg px-4">
-            <i class="bi bi-chat-dots me-2"></i>Написать в Макс
+      <div class="col-lg-5">
+        <div class="hero-service-cards">
+          <a href="/datasets.html" class="hero-scard">
+            <div class="hero-scard-icon"><i class="bi bi-database"></i></div>
+            <div>
+              <div class="hero-scard-title">Создание датасетов</div>
+              <p class="hero-scard-desc">Сбор, разметка, валидация — любые форматы и объёмы</p>
+            </div>
+            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
+          </a>
+          <a href="/deployment.html" class="hero-scard">
+            <div class="hero-scard-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+            <div>
+              <div class="hero-scard-title">Развёртывание моделей</div>
+              <p class="hero-scard-desc">Docker, Kubernetes, API, мониторинг — SLA 99.5%</p>
+            </div>
+            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
+          </a>
+          <a href="/finetuning.html" class="hero-scard">
+            <div class="hero-scard-icon"><i class="bi bi-stars"></i></div>
+            <div>
+              <div class="hero-scard-title">Дообучение ИИ</div>
+              <p class="hero-scard-desc">LoRA, QLoRA, DPO — адаптация под вашу задачу</p>
+            </div>
+            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
           </a>
         </div>
-        <div class="col-12 col-md-5 text-center">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ────────────────────────────────── -->
+<section class="stats-bar bg-white">
+  <div class="container">
+    <div class="row g-0 align-items-center justify-content-center text-center">
+      <div class="col-4 col-md-3 stat-item">
+        <div class="stat-value">NDA</div>
+        <div class="stat-label">Конфиденциальность</div>
+      </div>
+      <div class="col-auto d-none d-md-block stats-divider"></div>
+      <div class="col-4 col-md-3 stat-item">
+        <div class="stat-value">99.5%</div>
+        <div class="stat-label">SLA при деплое</div>
+      </div>
+      <div class="col-auto d-none d-md-block stats-divider"></div>
+      <div class="col-4 col-md-3 stat-item">
+        <div class="stat-value">Full</div>
+        <div class="stat-label">Цикл — от данных до прода</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ──────────────────────────────── -->
+<section class="py-5 bg-surface">
+  <div class="container py-4">
+    <div class="mb-5">
+      <div class="section-tag"><i class="bi bi-grid-3x3-gap"></i> Услуги</div>
+      <h2 class="section-title">Чем могу помочь</h2>
+      <p class="section-lead">Полный цикл ИИ-разработки — беру задачу целиком или отдельный этап</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="svc-card">
+          <div class="icon-box"><i class="bi bi-database"></i></div>
+          <h5>Создание датасетов</h5>
+          <p>Собираю, размечаю и валидирую данные для обучения. Работаю с текстом, изображениями, аудио — любой объём под вашу задачу.</p>
+          <a href="/datasets.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="svc-card">
+          <div class="icon-box"><i class="bi bi-cloud-upload"></i></div>
+          <h5>Развёртывание моделей</h5>
+          <p>Разворачиваю модели в продакшен: Docker, Kubernetes, REST/gRPC API, мониторинг, CI/CD. Любые облака и on-premise.</p>
+          <a href="/deployment.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="svc-card">
+          <div class="icon-box"><i class="bi bi-magic"></i></div>
+          <h5>Дообучение ИИ</h5>
+          <p>Адаптирую языковые модели под вашу предметную область с помощью LoRA, QLoRA, RLHF и DPO. Оцениваю результат по метрикам.</p>
+          <a href="/finetuning.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ─────────────────────────────────── -->
+<section class="py-5 bg-white">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="section-tag"><i class="bi bi-person-check"></i> Обо мне</div>
+        <h2 class="section-title">Работаю один, отвечаю лично</h2>
+        <p class="text-muted mb-4" style="line-height:1.75">Я — самозанятый ИИ-разработчик. Беру проекты лично, без посредников: сам веду переговоры, сам делаю работу, сам передаю результат. Это значит прямую коммуникацию и персональную ответственность за каждый этап.</p>
+        <p class="text-muted" style="line-height:1.75">Специализируюсь на NLP, компьютерном зрении, рекомендательных системах и голосовых технологиях. Подписываю NDA, работаю официально — выдаю чек через приложение «Мой налог».</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="why-card">
+              <div class="icon-box"><i class="bi bi-shield-check"></i></div>
+              <h6>Конфиденциальность</h6>
+              <p>Подписываю NDA до начала работы — ваши данные под защитой.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card">
+              <div class="icon-box"><i class="bi bi-person"></i></div>
+              <h6>Прямой контакт</h6>
+              <p>Общаетесь напрямую со мной — без менеджеров и переключений.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card">
+              <div class="icon-box"><i class="bi bi-receipt"></i></div>
+              <h6>Официально</h6>
+              <p>Самозанятый, НПД. Чек сразу после оплаты через «Мой налог».</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="why-card">
+              <div class="icon-box"><i class="bi bi-graph-up"></i></div>
+              <h6>Измеримый результат</h6>
+              <p>Фиксируем метрики качества до старта — принимаете по ним.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Expertise CTA ──────────────────────────── -->
+<section class="py-5 bg-surface">
+  <div class="container py-3 text-center">
+    <div class="section-tag mx-auto"><i class="bi bi-layers"></i> Экспертиза</div>
+    <h2 class="section-title">NLP · CV · Рекомендации · Голос · Поиск</h2>
+    <p class="section-lead mx-auto mb-4">Полный спектр направлений ИИ-разработки — от исследований до production.</p>
+    <a href="/portfolio.html" class="btn-brand">Смотреть направления <i class="bi bi-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ── Contact ───────────────────────────────── -->
+<section class="py-5 bg-white">
+  <div class="container py-3">
+    <div class="cta-block">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h3>Есть задача? Обсудим.</h3>
+          <p>Напишите мне в приватный чат в Макс — отвечу в течение часа в рабочее время. Расскажите задачу — предложу решение и оценю сроки.</p>
+          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-cta-primary">
+            <i class="bi bi-chat-dots"></i> Написать мне в Макс
+          </a>
+        </div>
+        <div class="col-lg-5 text-center">
           <div class="qr-wrap d-inline-block">
             <div id="qr-main"></div>
-            <p class="mb-0 mt-2 small text-muted">Отсканируйте QR-код</p>
+            <p class="mt-2 mb-0 small" style="color:var(--muted)">Отсканируйте QR-код</p>
           </div>
         </div>
       </div>
@@ -178,39 +230,36 @@
 </section>
 
 <!-- ── Footer ─────────────────────────────────── -->
-<footer class="py-5">
+<footer class="site-footer">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4 pb-4">
       <div class="col-12 col-md-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <i class="bi bi-cpu fs-5" style="color:var(--brand)"></i>
-          <span class="brand-name">ИИ-Монолит</span>
-        </div>
-        <p class="small" style="opacity:.6">Комплексные решения на базе искусственного интеллекта. Создаём датасеты, развёртываем модели, дообучаем ИИ.</p>
-        <p class="small" style="opacity:.4">Самозанятый, НПД (4%/6%)</p>
+        <div class="brand"><i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит</div>
+        <p>Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p style="color:rgba(255,255,255,.3);font-size:.8rem">Самозанятый · НПД (4% / 6%)</p>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Навигация</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a href="/">Главная</a></li>
-          <li class="mb-2"><a href="/datasets.html">Датасеты</a></li>
-          <li class="mb-2"><a href="/deployment.html">Развёртывание</a></li>
-          <li class="mb-2"><a href="/finetuning.html">Дообучение</a></li>
-          <li class="mb-2"><a href="/portfolio.html">Портфолио</a></li>
-          <li class="mb-2"><a href="/legal.html">Правовая информация</a></li>
+        <h6>Навигация</h6>
+        <ul class="list-unstyled footer-link-list">
+          <li><a href="/">Главная</a></li>
+          <li><a href="/datasets.html">Датасеты</a></li>
+          <li><a href="/deployment.html">Развёртывание</a></li>
+          <li><a href="/finetuning.html">Дообучение</a></li>
+          <li><a href="/portfolio.html">Направления</a></li>
+          <li><a href="/legal.html">Документы</a></li>
         </ul>
       </div>
       <div class="col-6 col-md-4">
-        <h6 class="fw-semibold mb-3" style="opacity:.8">Связаться</h6>
-        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2 small mb-3" style="color:var(--brand)">
-          <i class="bi bi-chat-dots"></i>Написать в Макс
+        <h6>Связаться</h6>
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2" style="color:var(--brand)">
+          <i class="bi bi-chat-dots"></i> Написать в Макс
         </a>
       </div>
     </div>
     <hr />
-    <div class="d-flex flex-column flex-md-row justify-content-between small" style="opacity:.4">
+    <div class="d-flex flex-column flex-md-row justify-content-between copy">
       <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
-      <span>Специальный налоговый режим «Налог на профессиональный доход» (НПД)</span>
+      <span>Специальный налоговый режим НПД</span>
     </div>
   </div>
 </footer>
@@ -219,17 +268,12 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Scroll navbar effect
   window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('siteNav').classList.toggle('opaque', window.scrollY > 40);
   });
-
-  // QR code
   new QRCode(document.getElementById('qr-main'), {
     text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
-    width: 120, height: 120,
-    colorDark: '#0f8ec2', colorLight: '#ffffff',
+    width: 128, height: 128, colorDark: '#0e7fc0', colorLight: '#ffffff',
     correctLevel: QRCode.CorrectLevel.M
   });
 </script>
