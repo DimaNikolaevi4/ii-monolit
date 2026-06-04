@@ -284,6 +284,13 @@
       opacity: 0;
     }
     .nav-brand-dot { color: var(--brand-2); }
+    .nav-brand-img {
+      width: 1.5rem; height: 1.5rem;
+      border-radius: .35rem;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
     .nav-actions {
       display: flex; align-items: center; gap: .15rem;
       flex-shrink: 0;
@@ -1068,7 +1075,7 @@
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a class="nav-brand" href="/" id="navBrand">
-      <i class="bi bi-cpu-fill nav-brand-dot"></i> ИИ‑Монолит
+      <img src="/favicon.svg" class="nav-brand-img" alt="" aria-hidden="true"> ИИ‑Монолит
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="/datasets.html">Датасеты</a></li>
@@ -1316,7 +1323,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand">
-          <i class="bi bi-cpu-fill" style="color:var(--brand-2)"></i> ИИ‑Монолит
+          <img src="/favicon.svg" class="nav-brand-img" alt="" aria-hidden="true"> ИИ‑Монолит
         </div>
         <p class="footer-tagline">Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
         <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:.5rem">Самозанятый · НПД (4% / 6%)</p>
