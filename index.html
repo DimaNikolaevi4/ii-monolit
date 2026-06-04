@@ -412,8 +412,15 @@
       font-size: .85rem; font-weight: 500;
       color: rgba(255,255,255,.6);
       background: rgba(255,255,255,.03);
-      transition: all .3s;
       cursor: default;
+      opacity: 0;
+      transform: scale(.88) translateY(8px);
+      transition: opacity .45s ease, transform .45s ease,
+                  border-color .3s, color .3s, background .3s;
+    }
+    .exp-tag.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
     .exp-tag:hover {
       border-color: var(--brand);
@@ -1179,11 +1186,22 @@ window.addEventListener('scroll', () => {
     opacity: 0, y: 30, stagger: .1, duration: .7, ease: 'power3.out'
   });
 
-  // Expertise tags
-  gsap.from('.exp-tag', {
-    scrollTrigger: { trigger: '#expertiseTags', start: 'top 85%' },
-    opacity: 0, scale: .9, stagger: .04, duration: .5, ease: 'back.out(1.5)'
-  });
+  // Expertise tags — IntersectionObserver (надёжнее ScrollTrigger в iframe)
+  const tagsContainer = document.getElementById('expertiseTags');
+  if (tagsContainer) {
+    const tagObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const tags = entry.target.querySelectorAll('.exp-tag');
+          tags.forEach((tag, i) => {
+            setTimeout(() => tag.classList.add('visible'), i * 45);
+          });
+          tagObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    tagObserver.observe(tagsContainer);
+  }
 
   // CTA block
   gsap.from('#ctaBlock', {
