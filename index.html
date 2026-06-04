@@ -195,6 +195,10 @@
       opacity: 0;
     }
     .nav-brand-dot { color: var(--brand-2); }
+    .nav-actions {
+      display: flex; align-items: center; gap: .15rem;
+      flex-shrink: 0;
+    }
     .nav-links {
       display: flex; align-items: center; gap: .25rem;
       list-style: none;
@@ -897,17 +901,6 @@
     <a class="nav-brand" href="/" id="navBrand">
       <i class="bi bi-cpu-fill nav-brand-dot"></i> ИИ‑Монолит
     </a>
-    <button class="nav-a11y-btn" id="a11yToggle" type="button"
-            aria-label="Версия для слабовидящих" title="Версия для слабовидящих"
-            aria-expanded="false" aria-controls="a11yPanel">
-      <i class="bi bi-eye" aria-hidden="true"></i>
-    </button>
-    <button class="nav-theme-toggle" id="themeToggle" aria-label="Переключить тему">
-      <i class="bi bi-sun" id="themeIcon"></i>
-    </button>
-    <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
-      <i class="bi bi-list" id="burgerIcon"></i>
-    </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="/datasets.html">Датасеты</a></li>
       <li><a href="/deployment.html">Развёртывание</a></li>
@@ -916,6 +909,19 @@
       <li><a href="/legal.html">Документы</a></li>
       <li><a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Написать мне</a></li>
     </ul>
+    <div class="nav-actions">
+      <button class="nav-a11y-btn" id="a11yToggle" type="button"
+              aria-label="Версия для слабовидящих" title="Версия для слабовидящих"
+              aria-expanded="false" aria-controls="a11yPanel">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+      </button>
+      <button class="nav-theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+      <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+        <i class="bi bi-list" id="burgerIcon"></i>
+      </button>
+    </div>
   </div>
 </nav>
 
