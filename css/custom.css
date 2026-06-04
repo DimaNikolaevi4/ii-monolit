@@ -1,0 +1,131 @@
+:root {
+  --brand: #0f8ec2;
+  --brand-dark: #0a6d94;
+  --brand-light: #e6f5fb;
+  --font-geist: 'Geist', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-geist);
+  color: #1a1a1a;
+}
+
+/* ── Navbar ─────────────────────────────────── */
+.navbar-brand svg { color: var(--brand); }
+.navbar { transition: background .3s, box-shadow .3s; }
+.navbar.scrolled { background: rgba(255,255,255,.97) !important; box-shadow: 0 1px 8px rgba(0,0,0,.08); }
+.nav-link { color: #555 !important; font-weight: 500; border-radius: .375rem; }
+.nav-link:hover, .nav-link.active { color: var(--brand) !important; background: rgba(15,142,194,.06); }
+
+/* ── Buttons ────────────────────────────────── */
+.btn-brand { background: var(--brand); color: #fff; border: none; }
+.btn-brand:hover { background: var(--brand-dark); color: #fff; }
+.btn-outline-brand { border: 1.5px solid var(--brand); color: var(--brand); background: transparent; }
+.btn-outline-brand:hover { background: var(--brand); color: #fff; }
+
+/* ── Hero ───────────────────────────────────── */
+.hero-section {
+  min-height: 100vh;
+  background: url('../img/ai_tutor.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(15,142,194,.82), rgba(10,109,148,.88));
+}
+.hero-content { position: relative; z-index: 2; }
+
+/* ── Service cards in hero ─────────────────── */
+.hero-card {
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: .75rem;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  transition: background .2s, transform .2s;
+  text-decoration: none;
+  display: block;
+  padding: 1.5rem;
+}
+.hero-card:hover { background: rgba(255,255,255,.22); color: #fff; transform: translateY(-2px); }
+.hero-card svg { color: rgba(255,255,255,.85); }
+
+/* ── Section badges ─────────────────────────── */
+.badge-brand { background: rgba(15,142,194,.12); color: var(--brand); font-weight: 600; font-size: .78rem; }
+
+/* ── Feature cards ──────────────────────────── */
+.feature-card {
+  border: 1px solid rgba(15,142,194,.15);
+  border-radius: .75rem;
+  transition: border-color .2s, box-shadow .2s;
+  height: 100%;
+}
+.feature-card:hover { border-color: rgba(15,142,194,.4); box-shadow: 0 4px 16px rgba(15,142,194,.1); }
+.feature-card .icon-wrap {
+  width: 3rem; height: 3rem;
+  background: rgba(15,142,194,.1);
+  border-radius: .5rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+}
+
+/* ── Process steps ──────────────────────────── */
+.step-circle {
+  width: 3rem; height: 3rem; flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(15,142,194,.1);
+  border: 2px solid rgba(15,142,194,.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+  font-weight: 700;
+  position: relative; z-index: 1;
+}
+.steps-wrapper { position: relative; }
+.steps-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 1.45rem; top: 3rem; bottom: 3rem;
+  width: 1px;
+  background: rgba(15,142,194,.2);
+}
+
+/* ── CTA card ───────────────────────────────── */
+.cta-card {
+  background: linear-gradient(135deg, rgba(15,142,194,.07), rgba(15,142,194,.13));
+  border: 1px solid rgba(15,142,194,.25);
+  border-radius: .875rem;
+}
+
+/* ── QR ─────────────────────────────────────── */
+.qr-wrap { background: #fff; border-radius: .75rem; padding: .75rem; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+
+/* ── Footer ─────────────────────────────────── */
+footer { background: #1a1a1a; color: #e5e5e5; }
+footer a { color: rgba(229,229,229,.65); text-decoration: none; transition: color .15s; }
+footer a:hover { color: var(--brand); }
+footer .brand-name { color: #fff; font-weight: 700; }
+footer hr { border-color: rgba(255,255,255,.1); }
+
+/* ── Accordion FAQ ───────────────────────────── */
+.accordion-button { font-weight: 500; }
+.accordion-button:not(.collapsed) { color: var(--brand); background: rgba(15,142,194,.05); box-shadow: none; }
+.accordion-button:focus { box-shadow: none; }
+
+/* ── Page hero (inner pages) ─────────────────── */
+.page-hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #fff;
+  padding: 7rem 0 3.5rem;
+}
+
+/* ── Scroll arrow ────────────────────────────── */
+.scroll-arrow { animation: bounce 2s infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ── Portfolio tags ─────────────────────────── */
+.tag { background: rgba(15,142,194,.1); color: var(--brand); border-radius: 999px; padding: .2rem .7rem; font-size: .75rem; font-weight: 500; }
