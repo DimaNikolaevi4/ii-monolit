@@ -290,12 +290,6 @@
       vertical-align: middle;
       flex-shrink: 0;
     }
-    /* Dark theme (default): белая голова, скрыть синюю */
-    .nav-brand-light { display: none; }
-    .nav-brand-dark  { display: inline-block; }
-    /* Light theme: синяя голова, скрыть белую */
-    [data-theme="light"] .nav-brand-dark  { display: none; }
-    [data-theme="light"] .nav-brand-light { display: inline-block; }
     .nav-actions {
       display: flex; align-items: center; gap: .15rem;
       flex-shrink: 0;
@@ -1080,8 +1074,7 @@
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a class="nav-brand" href="/" id="navBrand">
-      <img src="/logo_bel.png" class="nav-brand-img nav-brand-dark" alt="" aria-hidden="true">
-      <img src="/logo_sin.png" class="nav-brand-img nav-brand-light" alt="" aria-hidden="true"> ИИ‑Монолит
+      <img src="/favicon.png" class="nav-brand-img" alt="" aria-hidden="true"> ИИ‑Монолит
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="/datasets.html">Датасеты</a></li>
@@ -1329,8 +1322,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand">
-          <img src="/logo_bel.png" class="nav-brand-img nav-brand-dark" alt="" aria-hidden="true">
-          <img src="/logo_sin.png" class="nav-brand-img nav-brand-light" alt="" aria-hidden="true"> ИИ‑Монолит
+          <img src="/favicon.png" class="nav-brand-img" alt="" aria-hidden="true"> ИИ‑Монолит
         </div>
         <p class="footer-tagline">Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
         <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:.5rem">Самозанятый · НПД (4% / 6%)</p>
