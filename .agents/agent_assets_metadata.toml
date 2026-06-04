@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "a68dM8qdNrls5WkhRJzNJ"
+uri = "file://favicon.svg"
+type = "image"
+title = "Фавикон — wireframe ИИ-фигура"
