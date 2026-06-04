@@ -635,6 +635,87 @@
       font-size: .75rem; color: var(--c20);
     }
 
+    /* ── ACCESSIBILITY BUTTON ──────────────── */
+    .nav-a11y-btn {
+      background: none; border: 1px solid rgba(255,255,255,.12);
+      cursor: pointer; border-radius: .5rem;
+      display: flex; align-items: center; gap: .45rem;
+      padding: .3rem .6rem;
+      color: rgba(255,255,255,.55);
+      transition: background .2s, color .2s, border-color .2s;
+      flex-shrink: 0;
+    }
+    .nav-a11y-btn:hover { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.25); }
+    .a11y-eye { font-size: 1rem; line-height: 1; }
+    .a11y-label { font-size: .62rem; font-weight: 600; line-height: 1.25;
+      text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+    [data-theme="light"] .nav-a11y-btn { color: rgba(15,23,42,.55); border-color: rgba(0,0,0,.12); }
+    [data-theme="light"] .nav-a11y-btn:hover { background: rgba(0,0,0,.06); color: #1c3b85; border-color: rgba(28,59,133,.3); }
+
+    /* ── ACCESSIBILITY PANEL ────────────────── */
+    .a11y-panel {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
+      background: #1a2234;
+      border-bottom: 2px solid var(--brand);
+      padding: .75rem 2rem;
+      transform: translateY(-100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 4px 24px rgba(0,0,0,.4);
+    }
+    .a11y-panel.open { transform: translateY(0); }
+    .a11y-panel-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    }
+    .a11y-group { display: flex; align-items: center; gap: .75rem; }
+    .a11y-group-label { font-size: .7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .06em; color: rgba(255,255,255,.45); white-space: nowrap; }
+    .a11y-row { display: flex; gap: .35rem; }
+    .a11y-font-btn, .a11y-color-btn, .a11y-img-btn {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.75); cursor: pointer;
+      border-radius: .375rem; padding: .3rem .6rem;
+      font-family: inherit; font-weight: 700; line-height: 1;
+      transition: background .2s, border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+    .a11y-font-btn:nth-child(1) { font-size: .85rem; }
+    .a11y-font-btn:nth-child(2) { font-size: 1rem; }
+    .a11y-font-btn:nth-child(3) { font-size: 1.15rem; }
+    .a11y-font-btn:hover, .a11y-color-btn:hover, .a11y-img-btn:hover {
+      background: rgba(14,127,192,.25); border-color: var(--brand-2); color: #fff;
+    }
+    .a11y-font-btn.active, .a11y-color-btn.active, .a11y-img-btn.active {
+      background: var(--brand); border-color: var(--brand-2); color: #fff;
+    }
+    .a11y-reset {
+      margin-left: auto; font-family: inherit; font-size: .72rem;
+      font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      background: none; border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.4); cursor: pointer; padding: .3rem .8rem;
+      border-radius: .375rem; transition: background .2s, color .2s;
+    }
+    .a11y-reset:hover { background: rgba(255,0,0,.1); border-color: rgba(255,80,80,.3); color: #ff8080; }
+
+    /* Accessibility modes applied to <html> */
+    html[data-a11y-size="large"]  { font-size: 118%; }
+    html[data-a11y-size="xlarge"] { font-size: 140%; }
+
+    html[data-a11y-scheme="white"] { filter: invert(0); }
+    html[data-a11y-scheme="black"] body { background: #000 !important; color: #fff !important; filter: contrast(1.2); }
+    html[data-a11y-scheme="blue"]  body { background: #9dd1ff !important; color: #063462 !important; }
+    html[data-a11y-scheme="black"] .a11y-panel { background: #111; }
+    html[data-a11y-scheme="blue"]  .a11y-panel { background: #063462; }
+
+    html[data-a11y-img="off"] img,
+    html[data-a11y-img="off"] canvas,
+    html[data-a11y-img="off"] [style*="background-image"] { opacity: 0 !important; }
+
+    @media (max-width: 900px) {
+      .a11y-label { display: none; }
+      .nav-a11y-btn { padding: .35rem .45rem; border: none; }
+    }
+
     /* ── THEME TOGGLE ──────────────────────── */
     .nav-theme-toggle {
       background: none; border: none; cursor: pointer;
@@ -778,6 +859,36 @@
   </div>
 </div>
 
+<!-- Accessibility panel -->
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки версии для слабовидящих">
+  <div class="a11y-panel-inner">
+    <div class="a11y-group">
+      <span class="a11y-group-label">Размер шрифта</span>
+      <div class="a11y-row">
+        <button class="a11y-font-btn" data-size="normal" aria-label="Обычный размер шрифта">А</button>
+        <button class="a11y-font-btn" data-size="large"  aria-label="Крупный шрифт">А+</button>
+        <button class="a11y-font-btn" data-size="xlarge" aria-label="Очень крупный шрифт">А++</button>
+      </div>
+    </div>
+    <div class="a11y-group">
+      <span class="a11y-group-label">Цветовая схема</span>
+      <div class="a11y-row">
+        <button class="a11y-color-btn" data-scheme="white" aria-label="Белый фон">Б</button>
+        <button class="a11y-color-btn" data-scheme="black" aria-label="Чёрный фон">Ч</button>
+        <button class="a11y-color-btn" data-scheme="blue"  aria-label="Синий фон">С</button>
+      </div>
+    </div>
+    <div class="a11y-group">
+      <span class="a11y-group-label">Изображения</span>
+      <div class="a11y-row">
+        <button class="a11y-img-btn" data-img="on"  aria-label="Включить изображения">Вкл</button>
+        <button class="a11y-img-btn" data-img="off" aria-label="Отключить изображения">Выкл</button>
+      </div>
+    </div>
+    <button class="a11y-reset" id="a11yReset">Сбросить</button>
+  </div>
+</div>
+
 <!-- Particles -->
 <canvas id="particles-canvas"></canvas>
 
@@ -787,6 +898,10 @@
     <a class="nav-brand" href="/" id="navBrand">
       <i class="bi bi-cpu-fill nav-brand-dot"></i> ИИ‑Монолит
     </a>
+    <button class="nav-a11y-btn" id="a11yToggle" aria-label="Версия для слабовидящих" title="Версия для слабовидящих">
+      <span class="a11y-eye"><i class="bi bi-eye"></i></span>
+      <span class="a11y-label">Версия для<br>слабовидящих</span>
+    </button>
     <button class="nav-theme-toggle" id="themeToggle" aria-label="Переключить тему">
       <i class="bi bi-sun" id="themeIcon"></i>
     </button>
@@ -1272,6 +1387,81 @@ document.getElementById('year').textContent = new Date().getFullYear();
       }
     });
   }
+
+  /* ── ACCESSIBILITY JS ──────────────────── */
+  (function() {
+    const html    = document.documentElement;
+    const panel   = document.getElementById('a11yPanel');
+    const toggle  = document.getElementById('a11yToggle');
+    const reset   = document.getElementById('a11yReset');
+    const STORE   = 'ii-a11y';
+
+    function load() {
+      try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
+    }
+    function save(st) { localStorage.setItem(STORE, JSON.stringify(st)); }
+
+    function applySize(v) {
+      html.removeAttribute('data-a11y-size');
+      if (v && v !== 'normal') html.setAttribute('data-a11y-size', v);
+      document.querySelectorAll('.a11y-font-btn').forEach(b => b.classList.toggle('active', b.dataset.size === (v||'normal')));
+    }
+    function applyScheme(v) {
+      html.removeAttribute('data-a11y-scheme');
+      if (v && v !== 'white') html.setAttribute('data-a11y-scheme', v);
+      document.querySelectorAll('.a11y-color-btn').forEach(b => b.classList.toggle('active', b.dataset.scheme === (v||'white')));
+    }
+    function applyImg(v) {
+      html.removeAttribute('data-a11y-img');
+      if (v && v !== 'on') html.setAttribute('data-a11y-img', v);
+      document.querySelectorAll('.a11y-img-btn').forEach(b => b.classList.toggle('active', b.dataset.img === (v||'on')));
+    }
+
+    // Restore saved settings
+    const st = load();
+    if (st.size)   applySize(st.size);
+    if (st.scheme) applyScheme(st.scheme);
+    if (st.img)    applyImg(st.img);
+
+    // Toggle panel
+    if (toggle) toggle.addEventListener('click', () => panel.classList.toggle('open'));
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+      if (panel.classList.contains('open') && !panel.contains(e.target) && !toggle.contains(e.target))
+        panel.classList.remove('open');
+    });
+
+    // Font size buttons
+    document.querySelectorAll('.a11y-font-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.size; applySize(v);
+        const s = load(); s.size = v; save(s);
+      });
+    });
+
+    // Color scheme buttons
+    document.querySelectorAll('.a11y-color-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.scheme; applyScheme(v);
+        const s = load(); s.scheme = v; save(s);
+      });
+    });
+
+    // Image buttons
+    document.querySelectorAll('.a11y-img-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.img; applyImg(v);
+        const s = load(); s.img = v; save(s);
+      });
+    });
+
+    // Reset
+    if (reset) reset.addEventListener('click', () => {
+      applySize('normal'); applyScheme('white'); applyImg('on');
+      localStorage.removeItem(STORE);
+    });
+  })();
 
   /* ── THEME TOGGLE JS ───────────────────── */
   (function() {
