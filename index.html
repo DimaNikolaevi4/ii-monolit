@@ -8,187 +8,669 @@
   <link rel="icon" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="/custom.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #0e7fc0;
+      --brand-2: #38bdf8;
+      --dark: #080c14;
+      --dark-2: #0d1520;
+      --dark-3: #111c2d;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --border: rgba(255,255,255,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Geist', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PRELOADER ─────────────────────────── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #000;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    #preloader .pre-inner {
+      text-align: center;
+    }
+    #preloader .pre-logo {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: rgba(255,255,255,.85);
+      opacity: 0; transform: translateY(12px);
+    }
+    #preloader .pre-bar-wrap {
+      width: 140px; height: 1px;
+      background: rgba(255,255,255,.1);
+      margin: 1.5rem auto 0;
+      overflow: hidden;
+    }
+    #preloader .pre-bar {
+      height: 100%; width: 0%;
+      background: var(--brand-2);
+    }
+
+    /* ── CANVAS PARTICLES ──────────────────── */
+    #particles-canvas {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ───────────────────────────────── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 0;
+      transition: padding .4s, background .4s, border-color .4s;
+      border-bottom: 1px solid transparent;
+    }
+    .site-nav.scrolled {
+      padding: .875rem 0;
+      background: rgba(8,12,20,.85);
+      backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 1rem; letter-spacing: .02em;
+      color: #fff; text-decoration: none;
+      display: flex; align-items: center; gap: .5rem;
+      opacity: 0;
+    }
+    .nav-brand-dot { color: var(--brand-2); }
+    .nav-links {
+      display: flex; align-items: center; gap: .25rem;
+      list-style: none;
+      opacity: 0;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.5);
+      font-size: .82rem; font-weight: 500;
+      text-decoration: none; padding: .4rem .7rem;
+      border-radius: .375rem;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.06); }
+    .nav-cta {
+      font-size: .82rem; font-weight: 600;
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff; padding: .45rem 1.1rem;
+      border-radius: .5rem; text-decoration: none;
+      background: rgba(255,255,255,.05);
+      transition: background .2s, border-color .2s;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.35); color: #fff; }
+
+    /* ── HERO ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 7rem 2rem 5rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(14,127,192,.22) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 80%, rgba(56,189,248,.08) 0%, transparent 60%);
+      z-index: 0;
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      background: url('/ai_tutor.jpg') center/cover no-repeat;
+      opacity: .04;
+      z-index: 0;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 2;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--brand-2);
+      margin-bottom: 2rem;
+      opacity: 0; transform: translateY(20px);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--brand-2);
+    }
+    .hero-title {
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 900; line-height: .95;
+      letter-spacing: -.04em;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+    .hero-title .line { display: block; overflow: hidden; }
+    .hero-title .line-inner { display: block; transform: translateY(110%); }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--brand-2), var(--brand));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.1rem; line-height: 1.7;
+      color: rgba(255,255,255,.45);
+      max-width: 500px;
+      margin-bottom: 3rem;
+      opacity: 0; transform: translateY(20px);
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; transform: translateY(20px);
+    }
+    .btn-primary-hero {
+      background: var(--brand);
+      color: #fff; font-weight: 700; font-size: .95rem;
+      padding: .9rem 2.25rem;
+      border-radius: .625rem;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .5rem;
+      position: relative; overflow: hidden;
+      transition: transform .2s;
+    }
+    .btn-primary-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.15) 0%, transparent 60%);
+    }
+    .btn-primary-hero:hover { transform: translateY(-2px); color: #fff; }
+    .btn-ghost-hero {
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.7);
+      font-weight: 600; font-size: .95rem;
+      padding: .9rem 2.25rem;
+      border-radius: .625rem;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .5rem;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost-hero:hover { border-color: rgba(255,255,255,.35); color: #fff; }
+
+    .hero-scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+      opacity: 0;
+    }
+    .hero-scroll-hint .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.25), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── STATS TICKER ──────────────────────── */
+    .ticker-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 1.25rem 0;
+      position: relative; z-index: 2;
+    }
+    .ticker-track {
+      display: flex; gap: 4rem;
+      width: max-content;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 1.25rem;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .ticker-value { font-size: 1rem; font-weight: 800; color: var(--brand-2); }
+    .ticker-label { font-size: .78rem; color: rgba(255,255,255,.4); font-weight: 500; }
+    .ticker-sep { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.15); }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHARED ────────────────────── */
+    section { position: relative; z-index: 2; }
+    .section-wrap { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem; }
+    .section-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--brand-2);
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.06);
+    }
+    .section-h2 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 900; letter-spacing: -.035em;
+      line-height: 1.05; color: #fff;
+    }
+
+    /* ── SERVICES ──────────────────────────── */
+    .services-section { background: var(--dark); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+    .svc-item {
+      background: var(--dark);
+      padding: 2.5rem;
+      display: flex; flex-direction: column;
+      gap: 1.25rem;
+      text-decoration: none; color: inherit;
+      transition: background .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-item::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(14,127,192,.12) 0%, transparent 70%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .svc-item:hover::before { opacity: 1; }
+    .svc-item:hover { background: var(--dark-3); }
+    .svc-num {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      color: rgba(255,255,255,.2);
+    }
+    .svc-icon {
+      width: 3rem; height: 3rem;
+      border: 1px solid rgba(14,127,192,.3);
+      border-radius: .75rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brand-2); font-size: 1.25rem;
+      background: rgba(14,127,192,.08);
+    }
+    .svc-title {
+      font-size: 1.2rem; font-weight: 700; color: #fff;
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-size: .875rem; color: rgba(255,255,255,.4);
+      line-height: 1.7; flex: 1;
+    }
+    .svc-link {
+      font-size: .8rem; font-weight: 600; color: var(--brand-2);
+      display: flex; align-items: center; gap: .4rem;
+      margin-top: auto;
+      transition: gap .2s;
+    }
+    .svc-item:hover .svc-link { gap: .7rem; }
+
+    /* ── ABOUT ─────────────────────────────── */
+    .about-section { background: var(--dark-2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+    .about-big-text {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      line-height: 1.75;
+      color: rgba(255,255,255,.7);
+    }
+    .about-big-text strong { color: #fff; }
+    .about-facts { display: flex; flex-direction: column; gap: 1px; }
+    .fact-row {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      margin-bottom: .5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateX(30px);
+    }
+    .fact-row::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--brand-2));
+    }
+    .fact-icon {
+      width: 2.5rem; height: 2.5rem; flex-shrink: 0;
+      border-radius: .5rem;
+      background: rgba(14,127,192,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brand-2); font-size: 1rem;
+    }
+    .fact-title { font-weight: 700; font-size: .9rem; color: #fff; margin-bottom: .2rem; }
+    .fact-sub { font-size: .8rem; color: rgba(255,255,255,.4); }
+
+    /* ── PROCESS ───────────────────────────── */
+    .process-section { background: var(--dark); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 1.5rem; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 10%, var(--border) 90%, transparent);
+    }
+    .process-step { text-align: center; }
+    .process-num {
+      width: 3rem; height: 3rem;
+      border-radius: 50%;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; color: var(--brand-2);
+      margin: 0 auto 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .process-step h4 { font-size: .9rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+    .process-step p { font-size: .78rem; color: rgba(255,255,255,.35); line-height: 1.6; }
+
+    /* ── EXPERTISE ─────────────────────────── */
+    .expertise-section { background: var(--dark-2); overflow: hidden; }
+    .expertise-tags {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      margin-top: 3rem;
+    }
+    .exp-tag {
+      padding: .6rem 1.25rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      font-size: .85rem; font-weight: 500;
+      color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.03);
+      transition: all .3s;
+      cursor: default;
+    }
+    .exp-tag:hover {
+      border-color: var(--brand);
+      color: #fff;
+      background: rgba(14,127,192,.12);
+    }
+    .exp-tag.highlight {
+      border-color: rgba(56,189,248,.3);
+      color: var(--brand-2);
+      background: rgba(56,189,248,.06);
+    }
+
+    /* ── CTA ───────────────────────────────── */
+    .cta-section { background: var(--dark); }
+    .cta-block {
+      text-align: center;
+      padding: 5rem 2rem;
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      background: var(--dark-2);
+      position: relative; overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(14,127,192,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-block h2 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; letter-spacing: -.04em;
+      color: #fff; margin-bottom: 1rem;
+      position: relative;
+    }
+    .cta-block p {
+      font-size: 1.05rem; color: rgba(255,255,255,.4);
+      max-width: 480px; margin: 0 auto 2.5rem;
+      line-height: 1.7; position: relative;
+    }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; position: relative; }
+    .qr-small {
+      background: #fff; border-radius: .5rem;
+      padding: .5rem; display: inline-block;
+    }
+
+    /* ── FOOTER ────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      position: relative; z-index: 2;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; flex-direction: column; gap: 2.5rem;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .footer-brand {
+      font-weight: 700; font-size: 1rem; color: #fff;
+      display: flex; align-items: center; gap: .5rem;
+      margin-bottom: .75rem;
+    }
+    .footer-tagline { font-size: .82rem; color: rgba(255,255,255,.35); max-width: 240px; line-height: 1.6; }
+    .footer-nav-group h6 {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+      margin-bottom: .875rem;
+    }
+    .footer-nav-group ul { list-style: none; }
+    .footer-nav-group ul li { margin-bottom: .5rem; }
+    .footer-nav-group ul li a {
+      font-size: .82rem; color: rgba(255,255,255,.45);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-nav-group ul li a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: .75rem; color: rgba(255,255,255,.2);
+    }
+
+    /* ── RESPONSIVE ────────────────────────── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .nav-links { display: none; }
+      .hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
+    }
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .section-wrap { padding: 5rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav class="site-nav hero-nav" id="siteNav">
-  <div class="container">
-    <div class="d-flex align-items-center justify-content-between">
-      <a class="navbar-brand" href="/" style="color:#fff;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.5rem">
-        <i class="bi bi-cpu-fill" style="color:rgba(255,255,255,.7)"></i> ИИ‑Монолит
-      </a>
-      <button class="navbar-toggler border-0 bg-transparent p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="color:#fff">
-        <i class="bi bi-list fs-3"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
-          <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="/datasets.html">Датасеты</a></li>
-          <li class="nav-item"><a class="nav-link" href="/deployment.html">Развёртывание</a></li>
-          <li class="nav-item"><a class="nav-link" href="/finetuning.html">Дообучение</a></li>
-          <li class="nav-item"><a class="nav-link" href="/portfolio.html">Направления</a></li>
-          <li class="nav-item"><a class="nav-link" href="/legal.html">Документы</a></li>
-          <li class="nav-item ms-md-2">
-            <a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Обсудить проект</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+<!-- Preloader -->
+<div id="preloader">
+  <div class="pre-inner">
+    <div class="pre-logo">ИИ‑Монолит</div>
+    <div class="pre-bar-wrap"><div class="pre-bar" id="preBar"></div></div>
+  </div>
+</div>
+
+<!-- Particles -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Nav -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" id="navBrand">
+      <i class="bi bi-cpu-fill nav-brand-dot"></i> ИИ‑Монолит
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/datasets.html">Датасеты</a></li>
+      <li><a href="/deployment.html">Развёртывание</a></li>
+      <li><a href="/finetuning.html">Дообучение</a></li>
+      <li><a href="/portfolio.html">Направления</a></li>
+      <li><a href="/legal.html">Документы</a></li>
+      <li><a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Написать мне</a></li>
+    </ul>
   </div>
 </nav>
 
-<!-- ── Hero ─────────────────────────────────── -->
-<section class="hero-section">
-  <div class="hero-overlay"></div>
-  <div class="container hero-content py-5" style="padding-top:6rem!important">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-7">
-        <div class="hero-eyebrow">
-          <i class="bi bi-patch-check-fill"></i> Самозанятый · ИИ-разработчик
-        </div>
-        <h1 class="hero-title">ИИ под ключ —<br>от данных до прода</h1>
-        <p class="hero-sub">Создаю датасеты, дообучаю языковые модели и разворачиваю ИИ-сервисы в продакшен. Работаю индивидуально, подписываю NDA, отвечаю за результат.</p>
-        <div class="hero-btns">
-          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-hero-primary">
-            <i class="bi bi-chat-dots"></i> Написать мне
-          </a>
-          <a href="/portfolio.html" class="btn-hero-ghost">Направления работы</a>
-        </div>
-      </div>
-      <div class="col-lg-5">
-        <div class="hero-service-cards">
-          <a href="/datasets.html" class="hero-scard">
-            <div class="hero-scard-icon"><i class="bi bi-database"></i></div>
-            <div>
-              <div class="hero-scard-title">Создание датасетов</div>
-              <p class="hero-scard-desc">Сбор, разметка, валидация — любые форматы и объёмы</p>
-            </div>
-            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
-          </a>
-          <a href="/deployment.html" class="hero-scard">
-            <div class="hero-scard-icon"><i class="bi bi-cloud-arrow-up"></i></div>
-            <div>
-              <div class="hero-scard-title">Развёртывание моделей</div>
-              <p class="hero-scard-desc">Docker, Kubernetes, API, мониторинг — SLA 99.5%</p>
-            </div>
-            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
-          </a>
-          <a href="/finetuning.html" class="hero-scard">
-            <div class="hero-scard-icon"><i class="bi bi-stars"></i></div>
-            <div>
-              <div class="hero-scard-title">Дообучение ИИ</div>
-              <p class="hero-scard-desc">LoRA, QLoRA, DPO — адаптация под вашу задачу</p>
-            </div>
-            <i class="bi bi-arrow-right ms-auto" style="opacity:.5"></i>
-          </a>
-        </div>
-      </div>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" id="heroEyebrow">Самозанятый · ИИ-разработчик</div>
+    <h1 class="hero-title" id="heroTitle">
+      <span class="line"><span class="line-inner">ИИ под ключ —</span></span>
+      <span class="line"><span class="line-inner"><em>от данных</em></span></span>
+      <span class="line"><span class="line-inner">до прода</span></span>
+    </h1>
+    <p class="hero-sub" id="heroSub">Создаю датасеты, дообучаю языковые модели и разворачиваю ИИ-сервисы. Работаю индивидуально, подписываю NDA, отвечаю за результат.</p>
+    <div class="hero-actions" id="heroActions">
+      <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-primary-hero">
+        <i class="bi bi-chat-dots"></i> Написать мне
+      </a>
+      <a href="/portfolio.html" class="btn-ghost-hero">Направления работы</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" id="scrollHint">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-section">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><span class="ticker-value">NDA</span><span class="ticker-label">Конфиденциальность</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">99.5%</span><span class="ticker-label">SLA при деплое</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Full cycle</span><span class="ticker-label">от данных до прода</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">LoRA / QLoRA</span><span class="ticker-label">дообучение моделей</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">NLP · CV · TTS</span><span class="ticker-label">направления работы</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Самозанятый</span><span class="ticker-label">официально, чек сразу</span></div>
+    <div class="ticker-sep"></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-value">NDA</span><span class="ticker-label">Конфиденциальность</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">99.5%</span><span class="ticker-label">SLA при деплое</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Full cycle</span><span class="ticker-label">от данных до прода</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">LoRA / QLoRA</span><span class="ticker-label">дообучение моделей</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">NLP · CV · TTS</span><span class="ticker-label">направления работы</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Самозанятый</span><span class="ticker-label">официально, чек сразу</span></div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services-section" id="servicesSection">
+  <div class="section-wrap">
+    <div class="section-label">Услуги</div>
+    <h2 class="section-h2">Чем могу помочь</h2>
+    <div class="services-grid" id="servicesGrid">
+      <a href="/datasets.html" class="svc-item" data-reveal>
+        <span class="svc-num">01</span>
+        <div class="svc-icon"><i class="bi bi-database"></i></div>
+        <div class="svc-title">Создание датасетов</div>
+        <p class="svc-desc">Собираю, размечаю и валидирую данные для обучения ИИ. Работаю с текстом, изображениями, аудио — любой объём под вашу задачу.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a href="/deployment.html" class="svc-item" data-reveal>
+        <span class="svc-num">02</span>
+        <div class="svc-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+        <div class="svc-title">Развёртывание моделей</div>
+        <p class="svc-desc">Разворачиваю модели в продакшен: Docker, Kubernetes, REST/gRPC API, мониторинг, CI/CD. Любые облака и on-premise.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a href="/finetuning.html" class="svc-item" data-reveal>
+        <span class="svc-num">03</span>
+        <div class="svc-icon"><i class="bi bi-stars"></i></div>
+        <div class="svc-title">Дообучение ИИ</div>
+        <p class="svc-desc">Адаптирую языковые модели под вашу область с помощью LoRA, QLoRA, RLHF и DPO. Результат оцениваю по согласованным метрикам.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ── Stats ────────────────────────────────── -->
-<section class="stats-bar bg-white">
-  <div class="container">
-    <div class="row g-0 align-items-center justify-content-center text-center">
-      <div class="col-4 col-md-3 stat-item">
-        <div class="stat-value">NDA</div>
-        <div class="stat-label">Конфиденциальность</div>
+<!-- About -->
+<section class="about-section" id="aboutSection">
+  <div class="section-wrap">
+    <div class="section-label">Обо мне</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-h2" style="margin-bottom:2rem">Работаю один,<br>отвечаю лично</h2>
+        <p class="about-big-text">
+          Я — <strong>самозанятый ИИ-разработчик</strong>. Беру проекты без посредников: сам веду переговоры, сам делаю работу, сам передаю результат. Это значит прямую коммуникацию и персональную ответственность.
+          <br><br>
+          Специализируюсь на <strong>NLP, компьютерном зрении, рекомендательных системах</strong> и голосовых технологиях. Работаю официально — выдаю чек через «Мой налог».
+        </p>
       </div>
-      <div class="col-auto d-none d-md-block stats-divider"></div>
-      <div class="col-4 col-md-3 stat-item">
-        <div class="stat-value">99.5%</div>
-        <div class="stat-label">SLA при деплое</div>
-      </div>
-      <div class="col-auto d-none d-md-block stats-divider"></div>
-      <div class="col-4 col-md-3 stat-item">
-        <div class="stat-value">Full</div>
-        <div class="stat-label">Цикл — от данных до прода</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Services ──────────────────────────────── -->
-<section class="py-5 bg-surface">
-  <div class="container py-4">
-    <div class="mb-5">
-      <div class="section-tag"><i class="bi bi-grid-3x3-gap"></i> Услуги</div>
-      <h2 class="section-title">Чем могу помочь</h2>
-      <p class="section-lead">Полный цикл ИИ-разработки — беру задачу целиком или отдельный этап</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-12 col-md-4">
-        <div class="svc-card">
-          <div class="icon-box"><i class="bi bi-database"></i></div>
-          <h5>Создание датасетов</h5>
-          <p>Собираю, размечаю и валидирую данные для обучения. Работаю с текстом, изображениями, аудио — любой объём под вашу задачу.</p>
-          <a href="/datasets.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="svc-card">
-          <div class="icon-box"><i class="bi bi-cloud-upload"></i></div>
-          <h5>Развёртывание моделей</h5>
-          <p>Разворачиваю модели в продакшен: Docker, Kubernetes, REST/gRPC API, мониторинг, CI/CD. Любые облака и on-premise.</p>
-          <a href="/deployment.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="svc-card">
-          <div class="icon-box"><i class="bi bi-magic"></i></div>
-          <h5>Дообучение ИИ</h5>
-          <p>Адаптирую языковые модели под вашу предметную область с помощью LoRA, QLoRA, RLHF и DPO. Оцениваю результат по метрикам.</p>
-          <a href="/finetuning.html" class="card-link">Подробнее <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── About ─────────────────────────────────── -->
-<section class="py-5 bg-white">
-  <div class="container py-4">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-6">
-        <div class="section-tag"><i class="bi bi-person-check"></i> Обо мне</div>
-        <h2 class="section-title">Работаю один, отвечаю лично</h2>
-        <p class="text-muted mb-4" style="line-height:1.75">Я — самозанятый ИИ-разработчик. Беру проекты лично, без посредников: сам веду переговоры, сам делаю работу, сам передаю результат. Это значит прямую коммуникацию и персональную ответственность за каждый этап.</p>
-        <p class="text-muted" style="line-height:1.75">Специализируюсь на NLP, компьютерном зрении, рекомендательных системах и голосовых технологиях. Подписываю NDA, работаю официально — выдаю чек через приложение «Мой налог».</p>
-      </div>
-      <div class="col-lg-6">
-        <div class="row g-3">
-          <div class="col-6">
-            <div class="why-card">
-              <div class="icon-box"><i class="bi bi-shield-check"></i></div>
-              <h6>Конфиденциальность</h6>
-              <p>Подписываю NDA до начала работы — ваши данные под защитой.</p>
-            </div>
+      <div class="about-facts">
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-shield-lock"></i></div>
+          <div>
+            <div class="fact-title">Конфиденциальность</div>
+            <div class="fact-sub">Подписываю NDA до начала работы</div>
           </div>
-          <div class="col-6">
-            <div class="why-card">
-              <div class="icon-box"><i class="bi bi-person"></i></div>
-              <h6>Прямой контакт</h6>
-              <p>Общаетесь напрямую со мной — без менеджеров и переключений.</p>
-            </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-person-badge"></i></div>
+          <div>
+            <div class="fact-title">Прямой контакт</div>
+            <div class="fact-sub">Общаетесь напрямую — без менеджеров</div>
           </div>
-          <div class="col-6">
-            <div class="why-card">
-              <div class="icon-box"><i class="bi bi-receipt"></i></div>
-              <h6>Официально</h6>
-              <p>Самозанятый, НПД. Чек сразу после оплаты через «Мой налог».</p>
-            </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-receipt-cutoff"></i></div>
+          <div>
+            <div class="fact-title">Официально</div>
+            <div class="fact-sub">Самозанятый, НПД — чек сразу после оплаты</div>
           </div>
-          <div class="col-6">
-            <div class="why-card">
-              <div class="icon-box"><i class="bi bi-graph-up"></i></div>
-              <h6>Измеримый результат</h6>
-              <p>Фиксируем метрики качества до старта — принимаете по ним.</p>
-            </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-bullseye"></i></div>
+          <div>
+            <div class="fact-title">Измеримый результат</div>
+            <div class="fact-sub">Метрики качества фиксируем до старта</div>
           </div>
         </div>
       </div>
@@ -196,86 +678,295 @@
   </div>
 </section>
 
-<!-- ── Expertise CTA ──────────────────────────── -->
-<section class="py-5 bg-surface">
-  <div class="container py-3 text-center">
-    <div class="section-tag mx-auto"><i class="bi bi-layers"></i> Экспертиза</div>
-    <h2 class="section-title">NLP · CV · Рекомендации · Голос · Поиск</h2>
-    <p class="section-lead mx-auto mb-4">Полный спектр направлений ИИ-разработки — от исследований до production.</p>
-    <a href="/portfolio.html" class="btn-brand">Смотреть направления <i class="bi bi-arrow-right"></i></a>
-  </div>
-</section>
-
-<!-- ── Contact ───────────────────────────────── -->
-<section class="py-5 bg-white">
-  <div class="container py-3">
-    <div class="cta-block">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-7">
-          <h3>Есть задача? Обсудим.</h3>
-          <p>Напишите мне в приватный чат в Макс — отвечу в течение часа в рабочее время. Расскажите задачу — предложу решение и оценю сроки.</p>
-          <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-cta-primary">
-            <i class="bi bi-chat-dots"></i> Написать мне в Макс
-          </a>
-        </div>
-        <div class="col-lg-5 text-center">
-          <div class="qr-wrap d-inline-block">
-            <div id="qr-main"></div>
-            <p class="mt-2 mb-0 small" style="color:var(--muted)">Отсканируйте QR-код</p>
-          </div>
-        </div>
+<!-- Process -->
+<section class="process-section" id="processSection">
+  <div class="section-wrap">
+    <div class="section-label">Как работаю</div>
+    <h2 class="section-h2">Процесс</h2>
+    <div class="process-steps" id="processSteps">
+      <div class="process-step" data-step>
+        <div class="process-num">01</div>
+        <h4>Разбираемся в задаче</h4>
+        <p>Созвон или переписка — без лишних слов понимаем, что нужно</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">02</div>
+        <h4>Техническое задание</h4>
+        <p>Фиксируем метрики, сроки и стоимость — всё прозрачно</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">03</div>
+        <h4>Выполнение</h4>
+        <p>Работаю лично, регулярно отчитываюсь о прогрессе</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">04</div>
+        <h4>Проверка и доработка</h4>
+        <p>Валидирую по согласованным метрикам, итерирую до нужного</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">05</div>
+        <h4>Передача</h4>
+        <p>Полная документация, чек, поддержка 30 дней</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ─────────────────────────────────── -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="row g-4 pb-4">
-      <div class="col-12 col-md-4">
-        <div class="brand"><i class="bi bi-cpu-fill" style="color:var(--brand)"></i> ИИ‑Монолит</div>
-        <p>Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
-        <p style="color:rgba(255,255,255,.3);font-size:.8rem">Самозанятый · НПД (4% / 6%)</p>
-      </div>
-      <div class="col-6 col-md-4">
-        <h6>Навигация</h6>
-        <ul class="list-unstyled footer-link-list">
-          <li><a href="/">Главная</a></li>
-          <li><a href="/datasets.html">Датасеты</a></li>
-          <li><a href="/deployment.html">Развёртывание</a></li>
-          <li><a href="/finetuning.html">Дообучение</a></li>
-          <li><a href="/portfolio.html">Направления</a></li>
-          <li><a href="/legal.html">Документы</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md-4">
-        <h6>Связаться</h6>
-        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="d-flex align-items-center gap-2" style="color:var(--brand)">
-          <i class="bi bi-chat-dots"></i> Написать в Макс
+<!-- Expertise -->
+<section class="expertise-section" id="expertiseSection">
+  <div class="section-wrap">
+    <div class="section-label">Экспертиза</div>
+    <h2 class="section-h2">Технологии<br>и направления</h2>
+    <div class="expertise-tags" id="expertiseTags">
+      <span class="exp-tag highlight">NLP</span>
+      <span class="exp-tag highlight">LLM fine-tuning</span>
+      <span class="exp-tag highlight">LoRA / QLoRA</span>
+      <span class="exp-tag">Computer Vision</span>
+      <span class="exp-tag">YOLO · SAM · ViT</span>
+      <span class="exp-tag">RLHF · DPO</span>
+      <span class="exp-tag highlight">Dataset creation</span>
+      <span class="exp-tag">Semantic Search</span>
+      <span class="exp-tag">RAG</span>
+      <span class="exp-tag">TTS · STT</span>
+      <span class="exp-tag">Docker · Kubernetes</span>
+      <span class="exp-tag highlight">Python · PyTorch</span>
+      <span class="exp-tag">FastAPI · gRPC</span>
+      <span class="exp-tag">HuggingFace</span>
+      <span class="exp-tag">LangChain</span>
+      <span class="exp-tag">Qdrant · Chroma</span>
+      <span class="exp-tag">MLflow · W&B</span>
+      <span class="exp-tag highlight">Рекомендательные системы</span>
+      <span class="exp-tag">Аналитика данных</span>
+      <span class="exp-tag">OCR</span>
+      <span class="exp-tag">Multimodal AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="ctaSection">
+  <div class="section-wrap" style="padding-top:4rem;padding-bottom:7rem">
+    <div class="cta-block" id="ctaBlock">
+      <h2>Есть задача?<br>Обсудим.</h2>
+      <p>Напишите мне в Макс — опишите задачу, отвечу в течение часа в рабочее время и предложу решение.</p>
+      <div class="cta-actions">
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-primary-hero" style="font-size:1rem;padding:1rem 2.5rem">
+          <i class="bi bi-chat-dots"></i> Написать мне в Макс
         </a>
+        <div class="qr-small">
+          <div id="qr-cta"></div>
+        </div>
       </div>
     </div>
-    <hr />
-    <div class="d-flex flex-column flex-md-row justify-content-between copy">
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <i class="bi bi-cpu-fill" style="color:var(--brand-2)"></i> ИИ‑Монолит
+        </div>
+        <p class="footer-tagline">Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:.5rem">Самозанятый · НПД (4% / 6%)</p>
+      </div>
+      <div style="display:flex;gap:3rem;flex-wrap:wrap">
+        <div class="footer-nav-group">
+          <h6>Услуги</h6>
+          <ul>
+            <li><a href="/datasets.html">Датасеты</a></li>
+            <li><a href="/deployment.html">Развёртывание</a></li>
+            <li><a href="/finetuning.html">Дообучение</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h6>Прочее</h6>
+          <ul>
+            <li><a href="/portfolio.html">Направления</a></li>
+            <li><a href="/legal.html">Документы</a></li>
+            <li><a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Написать мне</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
       <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
       <span>Специальный налоговый режим НПД</span>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  window.addEventListener('scroll', () => {
-    document.getElementById('siteNav').classList.toggle('opaque', window.scrollY > 40);
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ── PARTICLES ──────────────────────────── */
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.size = Math.random() * 1.2 + .2;
+      this.speedX = (Math.random() - .5) * .25;
+      this.speedY = (Math.random() - .5) * .25;
+      this.opacity = Math.random() * .35 + .05;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(56,189,248,${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 90; i++) particles.push(new Particle());
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(14,127,192,${.06 * (1 - dist/100)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ── PRELOADER ──────────────────────────── */
+(function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const preloader  = document.getElementById('preloader');
+  const preLogo    = preloader.querySelector('.pre-logo');
+  const preBar     = document.getElementById('preBar');
+  const navBrand   = document.getElementById('navBrand');
+  const navLinks   = document.getElementById('navLinks');
+
+  const tl = gsap.timeline({
+    onComplete: () => {
+      preloader.style.display = 'none';
+      playHeroAnimation();
+    }
   });
-  new QRCode(document.getElementById('qr-main'), {
-    text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
-    width: 128, height: 128, colorDark: '#0e7fc0', colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.M
+
+  tl.to(preLogo,  { opacity: 1, y: 0, duration: .5, ease: 'power2.out' }, .1)
+    .to(preBar,   { width: '100%', duration: .7, ease: 'power1.inOut' }, .3)
+    .to(preloader,{ yPercent: -100, duration: .7, ease: 'power3.inOut' }, 1.1);
+
+  function playHeroAnimation() {
+    const eyebrow = document.getElementById('heroEyebrow');
+    const lines   = document.querySelectorAll('.hero-title .line-inner');
+    const sub     = document.getElementById('heroSub');
+    const actions = document.getElementById('heroActions');
+    const hint    = document.getElementById('scrollHint');
+
+    gsap.to(navBrand, { opacity: 1, duration: .6, ease: 'power2.out', delay: .1 });
+    gsap.to(navLinks, { opacity: 1, duration: .6, ease: 'power2.out', delay: .2 });
+    gsap.to(eyebrow,  { opacity: 1, y: 0, duration: .7, ease: 'power3.out', delay: .2 });
+    gsap.to(lines,    { y: '0%', duration: .9, ease: 'power3.out', stagger: .12, delay: .35 });
+    gsap.to(sub,      { opacity: 1, y: 0, duration: .7, ease: 'power3.out', delay: .75 });
+    gsap.to(actions,  { opacity: 1, y: 0, duration: .7, ease: 'power3.out', delay: .9 });
+    gsap.to(hint,     { opacity: 1, duration: .8, ease: 'power2.out', delay: 1.3 });
+  }
+})();
+
+/* ── SCROLL NAV ─────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── SCROLL ANIMATIONS ──────────────────── */
+(function() {
+  // Services grid items
+  gsap.from('.svc-item', {
+    scrollTrigger: { trigger: '#servicesGrid', start: 'top 80%' },
+    opacity: 0, y: 40, stagger: .15, duration: .8, ease: 'power3.out'
   });
+
+  // About section
+  gsap.from('.about-big-text', {
+    scrollTrigger: { trigger: '#aboutSection', start: 'top 75%' },
+    opacity: 0, y: 30, duration: .9, ease: 'power3.out'
+  });
+
+  // Fact rows
+  document.querySelectorAll('.fact-row').forEach((el, i) => {
+    gsap.to(el, {
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+      opacity: 1, x: 0, duration: .7, delay: i * .12, ease: 'power3.out'
+    });
+  });
+
+  // Process steps
+  gsap.from('[data-step]', {
+    scrollTrigger: { trigger: '#processSteps', start: 'top 80%' },
+    opacity: 0, y: 30, stagger: .1, duration: .7, ease: 'power3.out'
+  });
+
+  // Expertise tags
+  gsap.from('.exp-tag', {
+    scrollTrigger: { trigger: '#expertiseTags', start: 'top 85%' },
+    opacity: 0, scale: .9, stagger: .04, duration: .5, ease: 'back.out(1.5)'
+  });
+
+  // CTA block
+  gsap.from('#ctaBlock', {
+    scrollTrigger: { trigger: '#ctaBlock', start: 'top 80%' },
+    opacity: 0, y: 40, duration: .9, ease: 'power3.out'
+  });
+
+  // Section headings parallax
+  gsap.utils.toArray('.section-h2').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+      opacity: 0, y: 25, duration: .8, ease: 'power3.out'
+    });
+  });
+})();
+
+/* ── QR CODE ────────────────────────────── */
+new QRCode(document.getElementById('qr-cta'), {
+  text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
+  width: 80, height: 80,
+  colorDark: '#0e7fc0', colorLight: '#ffffff',
+  correctLevel: QRCode.CorrectLevel.M
+});
 </script>
 </body>
 </html>
