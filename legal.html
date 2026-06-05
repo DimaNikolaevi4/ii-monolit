@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="/css/custom.css" />
   <style>
-    .doc-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: .875rem; overflow: hidden; margin-bottom: 1rem; }
     .doc-header { padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; gap: 1rem; background: none; border: none; width: 100%; text-align: left; color: var(--h2-color); font-size: 1rem; }
     .doc-header:hover { background: rgba(255,255,255,.04); }
     [data-theme="light"] .doc-header:hover { background: rgba(14,127,192,.05); }
@@ -29,6 +28,8 @@
   </style>
 </head>
 <body>
+
+<canvas id="particles-canvas"></canvas>
 
 <!-- Accessibility panel -->
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки доступности">
@@ -237,6 +238,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/particles.js"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 /* Theme */
