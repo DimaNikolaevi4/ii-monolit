@@ -101,7 +101,7 @@ body, body * {
               border-color .35s ease, box-shadow .35s ease !important;
 }
 body *[style*="transform"], .section-h2, .about-big-text,
-.fact-row, .process-step, .exp-tag, #ctaBlock, #scroll-top {
+.fact-row, .process-step, .exp-tag, #ctaBlock {
   transition: background-color .35s ease, color .35s ease,
               border-color .35s ease, box-shadow .35s ease,
               opacity .3s ease, transform .3s ease !important;
@@ -636,7 +636,7 @@ main { padding-top: 0; position: relative; z-index: 1; }
 
 /* ── SCROLL TO TOP ───────────────────────── */
 #scroll-top {
-  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 9990;
   display: flex; align-items: center; justify-content: center;
   width: 2.4rem; height: 2.4rem;
   background: var(--brand);
@@ -644,20 +644,21 @@ main { padding-top: 0; position: relative; z-index: 1; }
   border-radius: 50%;
   color: #fff; font-size: 1rem;
   cursor: pointer;
-  opacity: 0; transform: translateY(14px) scale(.85);
+  opacity: 0 !important; transform: translateY(14px) scale(.85) !important;
   pointer-events: none;
   box-shadow: 0 4px 18px rgba(14,127,192,.45);
   padding: 0;
+  transition: opacity .35s ease, transform .35s ease, background-color .35s ease, box-shadow .35s ease !important;
 }
 #scroll-top .st-label { display: none; }
 #scroll-top.visible {
-  opacity: 1; transform: translateY(0) scale(1);
+  opacity: 1 !important; transform: translateY(0) scale(1) !important;
   pointer-events: auto;
 }
 #scroll-top:hover {
   background: #1a93cd;
   box-shadow: 0 6px 24px rgba(14,127,192,.65);
-  transform: translateY(-2px) scale(1.08);
+  transform: translateY(-2px) scale(1.08) !important;
 }
 [data-theme="light"] #scroll-top { background: var(--brand); color: #fff; }
 [data-theme="light"] #scroll-top:hover { background: #1a93cd; }
