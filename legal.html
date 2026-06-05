@@ -254,5 +254,17 @@ document.querySelectorAll('.doc-header').forEach(h => {
   });
 });
 </script>
+
+<button id="scroll-top" aria-label="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="bi bi-arrow-up"></i>
+</button>
+<script>
+  (function(){
+    var btn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function(){
+      btn.classList.toggle('visible', window.scrollY > 300);
+    }, {passive:true});
+  })();
+</script>
 </body>
 </html>
