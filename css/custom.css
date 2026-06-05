@@ -201,7 +201,9 @@ body {
   opacity: 0;
 }
 .site-nav.scrolled .nav-brand,
-.site-nav.scrolled .nav-links { opacity: 1; }
+.site-nav.scrolled .nav-links,
+.site-nav.opaque .nav-brand,
+.site-nav.opaque .nav-links { opacity: 1; }
 .nav-brand-dot { color: var(--brand-2); }
 .nav-brand-img {
   width: 1.5rem; height: 1.5rem;
