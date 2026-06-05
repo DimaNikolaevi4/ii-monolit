@@ -121,7 +121,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   var btn = document.getElementById('scroll-top');
   if (!btn) return;
   window.addEventListener('scroll', function () {
-    btn.classList.toggle('visible', window.scrollY > 300);
+    btn.classList.toggle('visible', window.scrollY > 100);
   }, { passive: true });
 })();
 
