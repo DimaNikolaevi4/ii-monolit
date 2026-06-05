@@ -120,8 +120,33 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 (function () {
   var btn = document.getElementById('scroll-top');
   if (!btn) return;
+
+  /* Начальное состояние — скрыта через inline-стиль (important чтобы перебить body * transition) */
+  btn.style.setProperty('transition', 'opacity 0.35s ease, transform 0.35s ease', 'important');
+  btn.style.opacity = '0';
+  btn.style.transform = 'translateY(14px) scale(0.85)';
+  btn.style.pointerEvents = 'none';
+
+  var visible = false;
+
+  function show() {
+    if (visible) return;
+    visible = true;
+    btn.style.opacity = '1';
+    btn.style.transform = 'translateY(0) scale(1)';
+    btn.style.pointerEvents = 'auto';
+  }
+
+  function hide() {
+    if (!visible) return;
+    visible = false;
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(14px) scale(0.85)';
+    btn.style.pointerEvents = 'none';
+  }
+
   window.addEventListener('scroll', function () {
-    btn.classList.toggle('visible', window.scrollY > 100);
+    window.scrollY > 100 ? show() : hide();
   }, { passive: true });
 })();
 
