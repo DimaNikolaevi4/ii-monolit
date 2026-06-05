@@ -112,8 +112,7 @@
     [data-theme="light"] .exp-tag:hover {
       color: var(--brand);
       background: rgba(14,127,192,.1);
-      border-color: rgba(14,127,192,.35);
-      box-shadow: 0 0 10px rgba(14,127,192,.1);
+      animation: glassPulseLight 1.8s ease-in-out infinite;
     }
     [data-theme="light"] .exp-tag.highlight {
       border-color: rgba(3,105,161,.25);
@@ -147,9 +146,8 @@
       background: rgba(255,255,255,.65);
     }
     [data-theme="light"] .fact-row:hover {
-      border-color: rgba(14,127,192,.3);
-      box-shadow: var(--shadow-brand), var(--shadow-md);
       background: rgba(255,255,255,.88);
+      animation: glassPulseLight 1.8s ease-in-out infinite;
     }
     [data-theme="light"] .fact-icon {
       background: rgba(14,127,192,.08);
@@ -162,8 +160,7 @@
     }
     [data-theme="light"] .svc-item:hover {
       background: rgba(255,255,255,.9);
-      border-color: rgba(14,127,192,.3);
-      box-shadow: var(--shadow-brand), var(--shadow-md);
+      animation: glassPulseLight 1.8s ease-in-out infinite;
     }
     [data-theme="light"] .svc-icon {
       background: rgba(14,127,192,.08);
@@ -554,9 +551,8 @@
     .svc-item:hover::before { opacity: 1; }
     .svc-item:hover {
       background: var(--bg-hover);
-      border-color: rgba(14,127,192,.28);
-      box-shadow: var(--shadow-brand), var(--shadow-md);
       transform: translateY(-3px) !important;
+      animation: glassPulse 1.8s ease-in-out infinite;
     }
     .svc-num {
       font-size: .7rem; font-weight: 700; letter-spacing: .1em;
@@ -628,9 +624,8 @@
       box-shadow: var(--shadow-sm);
     }
     .fact-row:hover {
-      border-color: rgba(14,127,192,.28);
-      box-shadow: var(--shadow-brand), var(--shadow-md);
       background: var(--bg-hover);
+      animation: glassPulse 1.8s ease-in-out infinite;
     }
     .fact-row.visible { opacity: 1; transform: translateX(0); }
     .fact-row::before {
@@ -725,10 +720,9 @@
       transform: scale(1) translateY(0);
     }
     .exp-tag:hover {
-      border-color: rgba(14,127,192,.4);
       color: var(--h2-color);
       background: rgba(14,127,192,.1);
-      box-shadow: 0 0 12px rgba(14,127,192,.15);
+      animation: glassPulse 1.8s ease-in-out infinite;
     }
     .exp-tag.highlight {
       border-color: rgba(56,189,248,.28);
