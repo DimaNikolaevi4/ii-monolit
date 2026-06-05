@@ -9,10 +9,10 @@
   --muted:   #94a3b8;
   --border:  rgba(255,255,255,.08);
 
-  --bg-s1:          rgba(6,10,17,.7);
-  --bg-s2:          rgba(11,20,34,.65);
-  --bg-card:        rgba(10,16,28,.72);
-  --bg-hover:       rgba(15,26,46,.9);
+  --bg-s1:          rgba(6,10,17,.28);
+  --bg-s2:          rgba(11,20,34,.22);
+  --bg-card:        rgba(10,16,28,.38);
+  --bg-hover:       rgba(15,26,46,.55);
   --c70:            rgba(255,255,255,.72);
   --c50:            rgba(255,255,255,.52);
   --c45:            rgba(255,255,255,.46);
@@ -27,8 +27,8 @@
   --cta-h2:         #fff;
   --cta-p:          rgba(255,255,255,.42);
 
-  --glass-bg:       rgba(255,255,255,.04);
-  --glass-border:   rgba(255,255,255,.09);
+  --glass-bg:       rgba(255,255,255,.07);
+  --glass-border:   rgba(255,255,255,.14);
   --shadow-sm:      0 2px 8px rgba(0,0,0,.3);
   --shadow-md:      0 4px 24px rgba(0,0,0,.4);
   --shadow-lg:      0 8px 48px rgba(0,0,0,.5);
@@ -393,6 +393,8 @@ main { padding-top: 0; }
 .feat-card {
   background: var(--glass-bg); border: 1px solid var(--glass-border);
   border-radius: .75rem; padding: 1.5rem; height: 100%;
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
   transition: border-color .2s, box-shadow .2s;
 }
 .feat-card:hover { border-color: rgba(14,127,192,.3); box-shadow: var(--shadow-brand); }
@@ -423,6 +425,8 @@ main { padding-top: 0; }
 .why-card {
   background: var(--glass-bg); border: 1px solid var(--glass-border);
   border-radius: .875rem; padding: 1.75rem; text-align: center; height: 100%;
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
   transition: border-color .2s, box-shadow .2s;
 }
 .why-card:hover { border-color: rgba(14,127,192,.3); box-shadow: var(--shadow-brand); }
@@ -439,6 +443,8 @@ main { padding-top: 0; }
 .cta-block {
   background: var(--glass-bg); border: 1px solid var(--glass-border);
   border-radius: 1rem; padding: 3rem; position: relative; overflow: hidden;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
   box-shadow: var(--shadow-brand-lg), var(--shadow-lg);
 }
 .cta-block::before {
