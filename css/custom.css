@@ -638,22 +638,83 @@ main { padding-top: 0; position: relative; z-index: 1; }
 #scroll-top {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 9990;
   display: flex; align-items: center; justify-content: center;
-  width: 2.6rem; height: 2.6rem;
-  background: var(--brand);
-  border: none;
+  width: 3rem; height: 3rem;
+  background: rgba(14, 127, 192, 0.13);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 50%;
-  color: #fff; font-size: 1.1rem;
+  color: rgba(255,255,255,.88);
+  font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(14,127,192,.5);
   padding: 0;
+  box-shadow:
+    0 6px 28px rgba(14,127,192,.38),
+    0 1px 0 rgba(255,255,255,.18) inset,
+    0 -1px 0 rgba(14,127,192,.15) inset;
+}
+#scroll-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+}
+#scroll-top:hover {
+  background: rgba(14, 127, 192, 0.26);
+  border-color: rgba(56, 189, 248, 0.48);
+  color: #fff;
+  box-shadow:
+    0 8px 36px rgba(14,127,192,.55),
+    0 0 18px rgba(56,189,248,.22),
+    0 1px 0 rgba(255,255,255,.22) inset;
 }
 #scroll-top .st-label { display: none; }
-#scroll-top:hover {
-  background: #1a93cd;
-  box-shadow: 0 6px 24px rgba(14,127,192,.7);
+#scroll-top .st-icon { position: relative; z-index: 1; }
+
+/* Progress ring SVG */
+.st-ring {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+  border-radius: 50%;
+  pointer-events: none;
 }
-[data-theme="light"] #scroll-top { background: var(--brand); color: #fff; }
-[data-theme="light"] #scroll-top:hover { background: #1a93cd; }
+.st-ring-bg {
+  fill: none;
+  stroke: rgba(56,189,248,.12);
+  stroke-width: 2.2;
+}
+.st-ring-pr {
+  fill: none;
+  stroke: url(#st-grad);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+[data-theme="light"] #scroll-top {
+  background: rgba(14,127,192,.11);
+  border-color: rgba(14,127,192,.3);
+  color: #0e7fc0;
+  box-shadow:
+    0 6px 28px rgba(14,127,192,.2),
+    0 1px 0 rgba(255,255,255,.8) inset;
+}
+[data-theme="light"] #scroll-top:hover {
+  background: rgba(14,127,192,.2);
+  color: #0e7fc0;
+}
+[data-theme="light"] #scroll-top::before {
+  background: linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 60%);
+}
+
+@media (max-width: 768px) {
+  #scroll-top { bottom: 1.25rem; right: 1.25rem; width: 2.75rem; height: 2.75rem; }
+}
+@media (max-width: 480px) {
+  #scroll-top { bottom: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; font-size: .88rem; }
+}
 
 /* ── UTILITY ─────────────────────────────── */
 .text-brand { color: var(--brand-2); }
@@ -693,9 +754,6 @@ h1,h2,h3,h4,h5,h6 { color: var(--h2-color); }
   /* A11y panel */
   .a11y-panel { right: .75rem; }
 
-  /* Scroll-top */
-  #scroll-top { bottom: 1.25rem; right: 1.25rem; }
-
   /* Шаги (step-row) на внутренних страницах */
   .step-row { gap: 1rem; }
 
@@ -730,9 +788,6 @@ h1,h2,h3,h4,h5,h6 { color: var(--h2-color); }
   /* CTA */
   .cta-block { padding: 1.75rem 1.25rem; border-radius: 1rem; }
   .btn-cta-primary { padding: .7rem 1.5rem; font-size: .9rem; }
-
-  /* Scroll-top */
-  #scroll-top { bottom: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; font-size: 1rem; }
 
   /* FAQ */
   .faq-btn { font-size: .88rem; padding: .9rem 0; }
