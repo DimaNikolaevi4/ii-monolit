@@ -24,11 +24,11 @@
       --border:  rgba(255,255,255,.08);
 
       /* Themed semantic tokens (dark defaults) */
-      --bg-s1:          rgba(6,10,17,.7);
-      --bg-s2:          rgba(11,20,34,.65);
-      --bg-card:        rgba(10,16,28,.72);
-      --bg-card2:       rgba(13,21,36,.78);
-      --bg-hover:       rgba(15,26,46,.9);
+      --bg-s1:          rgba(6,10,17,.28);
+      --bg-s2:          rgba(11,20,34,.22);
+      --bg-card:        rgba(10,16,28,.38);
+      --bg-card2:       rgba(13,21,36,.44);
+      --bg-hover:       rgba(15,26,46,.55);
       --c70:            rgba(255,255,255,.72);
       --c50:            rgba(255,255,255,.52);
       --c45:            rgba(255,255,255,.46);
@@ -48,8 +48,8 @@
       --theme-toggle-c: rgba(255,255,255,.7);
 
       /* Glass & shadow system */
-      --glass-bg:       rgba(255,255,255,.04);
-      --glass-border:   rgba(255,255,255,.09);
+      --glass-bg:       rgba(255,255,255,.07);
+      --glass-border:   rgba(255,255,255,.14);
       --shadow-sm:      0 2px 8px rgba(0,0,0,.3);
       --shadow-md:      0 4px 24px rgba(0,0,0,.4);
       --shadow-lg:      0 8px 48px rgba(0,0,0,.5);
@@ -517,7 +517,11 @@
     .section-h2.visible { opacity: 1; transform: translateY(0); }
 
     /* ── SERVICES ──────────────────────────── */
-    .services-section { background: var(--bg-s1); }
+    .services-section {
+      background: var(--bg-s1);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -591,7 +595,11 @@
     .svc-item:hover .svc-link { gap: .7rem; }
 
     /* ── ABOUT ─────────────────────────────── */
-    .about-section { background: var(--bg-s2); }
+    .about-section {
+      background: var(--bg-s2);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -648,7 +656,11 @@
     .fact-sub { font-size: .8rem; color: var(--c40); }
 
     /* ── PROCESS ───────────────────────────── */
-    .process-section { background: var(--bg-s1); }
+    .process-section {
+      background: var(--bg-s1);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    }
     .process-steps {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -691,7 +703,12 @@
     .process-step p { font-size: .78rem; color: var(--c35); line-height: 1.6; }
 
     /* ── EXPERTISE ─────────────────────────── */
-    .expertise-section { background: var(--bg-s2); overflow: hidden; }
+    .expertise-section {
+      background: var(--bg-s2);
+      overflow: hidden;
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    }
     .expertise-tags {
       display: flex; flex-wrap: wrap; gap: .75rem;
       margin-top: 3rem;
@@ -729,7 +746,11 @@
     }
 
     /* ── CTA ───────────────────────────────── */
-    .cta-section { background: var(--bg-s1); }
+    .cta-section {
+      background: var(--bg-s1);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    }
     .cta-block {
       text-align: center;
       padding: 5rem 2rem;
