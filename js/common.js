@@ -121,10 +121,41 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   var btn = document.getElementById('scroll-top');
   if (!btn) return;
 
-  /* Начальное состояние — скрыта через inline-стиль (important чтобы перебить body * transition) */
-  btn.style.setProperty('transition', 'opacity 0.35s ease, transform 0.35s ease', 'important');
-  btn.style.opacity = '0';
-  btn.style.transform = 'translateY(14px) scale(0.85)';
+  /* SVG-градиент в <defs> — добавляем один раз в body */
+  var defsEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  defsEl.setAttribute('aria-hidden', 'true');
+  defsEl.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;';
+  defsEl.innerHTML =
+    '<defs>' +
+      '<linearGradient id="st-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+        '<stop offset="0%" stop-color="#38bdf8"/>' +
+        '<stop offset="100%" stop-color="#0e7fc0"/>' +
+      '</linearGradient>' +
+    '</defs>';
+  document.body.appendChild(defsEl);
+
+  /* Вставляем кольцо прогресса в кнопку */
+  var CIRC = 2 * Math.PI * 20; /* r=20, viewBox 48×48 */
+  var ringHTML =
+    '<svg class="st-ring" viewBox="0 0 48 48" aria-hidden="true">' +
+      '<circle class="st-ring-bg" cx="24" cy="24" r="20"/>' +
+      '<circle class="st-ring-pr" cx="24" cy="24" r="20"/>' +
+    '</svg>';
+  btn.insertAdjacentHTML('afterbegin', ringHTML);
+
+  var ringPr = btn.querySelector('.st-ring-pr');
+
+  /* Задаём начальный dasharray/offset */
+  if (ringPr) {
+    ringPr.style.strokeDasharray  = CIRC;
+    ringPr.style.strokeDashoffset = CIRC;
+    ringPr.style.setProperty('transition', 'stroke-dashoffset 0.12s linear', 'important');
+  }
+
+  /* Начальное состояние кнопки — скрыта */
+  btn.style.setProperty('transition', 'opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease', 'important');
+  btn.style.opacity       = '0';
+  btn.style.transform     = 'translateY(16px) scale(0.82)';
   btn.style.pointerEvents = 'none';
 
   var visible = false;
@@ -132,21 +163,29 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   function show() {
     if (visible) return;
     visible = true;
-    btn.style.opacity = '1';
-    btn.style.transform = 'translateY(0) scale(1)';
+    btn.style.opacity       = '1';
+    btn.style.transform     = 'translateY(0) scale(1)';
     btn.style.pointerEvents = 'auto';
   }
 
   function hide() {
     if (!visible) return;
     visible = false;
-    btn.style.opacity = '0';
-    btn.style.transform = 'translateY(14px) scale(0.85)';
+    btn.style.opacity       = '0';
+    btn.style.transform     = 'translateY(16px) scale(0.82)';
     btn.style.pointerEvents = 'none';
+  }
+
+  function updateRing() {
+    if (!ringPr) return;
+    var total    = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = total > 0 ? Math.min(window.scrollY / total, 1) : 0;
+    ringPr.style.strokeDashoffset = CIRC * (1 - progress);
   }
 
   window.addEventListener('scroll', function () {
     window.scrollY > 100 ? show() : hide();
+    updateRing();
   }, { passive: true });
 })();
 
