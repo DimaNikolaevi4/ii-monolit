@@ -276,22 +276,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="/js/particles.js"></script>
+<script src="/js/common.js"></script>
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-/* Theme */
-(function(){const html=document.documentElement,btn=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon'),STORE='ii-theme';function apply(t){if(t==='light'){html.setAttribute('data-theme','light');icon.className='bi bi-moon-stars';}else{html.removeAttribute('data-theme');icon.className='bi bi-sun';}}apply(localStorage.getItem(STORE)||'dark');if(btn)btn.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='light'?'dark':'light';apply(n);localStorage.setItem(STORE,n);});})();
-/* Burger */
-(function(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks'),i=document.getElementById('burgerIcon');if(!b)return;b.addEventListener('click',()=>{const o=l.classList.toggle('open');b.setAttribute('aria-expanded',o);i.className=o?'bi bi-x-lg':'bi bi-list';});document.addEventListener('click',e=>{if(!b.contains(e.target)&&!l.contains(e.target)){l.classList.remove('open');b.setAttribute('aria-expanded','false');i.className='bi bi-list';}});})();
-/* A11y */
-(function(){const body=document.body,panel=document.getElementById('a11yPanel'),toggle=document.getElementById('a11yToggle'),btnR=document.getElementById('a11yReset'),btnC=document.getElementById('a11yClose'),cbLF=document.getElementById('a11yLargeFont'),cbHC=document.getElementById('a11yHighContrast'),cbNA=document.getElementById('a11yNoAnimations'),STORE='ii-a11y';function load(){try{return JSON.parse(localStorage.getItem(STORE))||{};}catch(e){return{};}}function save(p){localStorage.setItem(STORE,JSON.stringify(p));}function applyP(p){body.classList.toggle('a11y-large-font',!!p.lf);body.classList.toggle('a11y-high-contrast',!!p.hc);body.classList.toggle('a11y-no-animations',!!p.na);}function syncC(p){if(cbLF)cbLF.checked=!!p.lf;if(cbHC)cbHC.checked=!!p.hc;if(cbNA)cbNA.checked=!!p.na;}const prefs=load();applyP(prefs);syncC(prefs);function openP(){panel.classList.add('open');toggle.setAttribute('aria-expanded','true');}function closeP(){panel.classList.remove('open');toggle.setAttribute('aria-expanded','false');}if(toggle)toggle.addEventListener('click',()=>panel.classList.contains('open')?closeP():openP());document.addEventListener('click',e=>{if(panel.classList.contains('open')&&!panel.contains(e.target)&&!toggle.contains(e.target))closeP();});if(cbLF)cbLF.addEventListener('change',()=>{prefs.lf=cbLF.checked;applyP(prefs);save(prefs);});if(cbHC)cbHC.addEventListener('change',()=>{prefs.hc=cbHC.checked;applyP(prefs);save(prefs);});if(cbNA)cbNA.addEventListener('change',()=>{prefs.na=cbNA.checked;applyP(prefs);save(prefs);});if(btnR)btnR.addEventListener('click',()=>{prefs.lf=prefs.hc=prefs.na=false;applyP(prefs);syncC(prefs);save(prefs);});if(btnC)btnC.addEventListener('click',closeP);})();
-document.querySelectorAll('.faq-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-  });
-});
 new QRCode(document.getElementById('qr-ds'), {
-  text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
+    text: 'https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM',
   width: 128, height: 128, colorDark: '#0e7fc0', colorLight: '#ffffff',
   correctLevel: QRCode.CorrectLevel.M
 });
@@ -300,13 +288,5 @@ new QRCode(document.getElementById('qr-ds'), {
 <button id="scroll-top" aria-label="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <i class="bi bi-arrow-up"></i>
 </button>
-<script>
-  (function(){
-    var btn = document.getElementById('scroll-top');
-    window.addEventListener('scroll', function(){
-      btn.classList.toggle('visible', window.scrollY > 300);
-    }, {passive:true});
-  })();
-</script>
 </body>
 </html>
