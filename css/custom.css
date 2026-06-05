@@ -645,20 +645,23 @@ main { padding-top: 0; position: relative; z-index: 1; }
   border-radius: .625rem;
   color: #fff; font-size: .85rem;
   cursor: pointer;
-  opacity: 0; transform: translateY(12px);
-  pointer-events: none;
-  box-shadow: 0 4px 20px rgba(14,127,192,.4);
+  opacity: 0.35;
+  pointer-events: auto;
+  box-shadow: 0 4px 20px rgba(14,127,192,.25);
   padding: 0;
 }
 #scroll-top .st-icon { font-size: 1.1rem; line-height: 1; }
 #scroll-top .st-label { font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
-#scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+#scroll-top.visible {
+  opacity: 1;
+  box-shadow: 0 4px 20px rgba(14,127,192,.45);
+}
 #scroll-top:hover {
   background: #1a93cd;
-  box-shadow: 0 6px 28px rgba(14,127,192,.55);
+  box-shadow: 0 6px 28px rgba(14,127,192,.6);
+  opacity: 1;
   transform: translateY(-2px);
 }
-#scroll-top.visible:hover { transform: translateY(-2px); }
 [data-theme="light"] #scroll-top { background: var(--brand); color: #fff; }
 [data-theme="light"] #scroll-top:hover { background: #1a93cd; }
 
