@@ -637,30 +637,27 @@ main { padding-top: 0; position: relative; z-index: 1; }
 /* ── SCROLL TO TOP ───────────────────────── */
 #scroll-top {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: .2rem;
-  width: 3rem; height: 3rem;
+  display: flex; align-items: center; justify-content: center;
+  width: 2.4rem; height: 2.4rem;
   background: var(--brand);
   border: none;
-  border-radius: .625rem;
-  color: #fff; font-size: .85rem;
+  border-radius: 50%;
+  color: #fff; font-size: 1rem;
   cursor: pointer;
-  opacity: 0.35;
-  pointer-events: auto;
-  box-shadow: 0 4px 20px rgba(14,127,192,.25);
+  opacity: 0; transform: translateY(14px) scale(.85);
+  pointer-events: none;
+  box-shadow: 0 4px 18px rgba(14,127,192,.45);
   padding: 0;
 }
-#scroll-top .st-icon { font-size: 1.1rem; line-height: 1; }
-#scroll-top .st-label { font-size: .6rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
+#scroll-top .st-label { display: none; }
 #scroll-top.visible {
-  opacity: 1;
-  box-shadow: 0 4px 20px rgba(14,127,192,.45);
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 #scroll-top:hover {
   background: #1a93cd;
-  box-shadow: 0 6px 28px rgba(14,127,192,.6);
-  opacity: 1;
-  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(14,127,192,.65);
+  transform: translateY(-2px) scale(1.08);
 }
 [data-theme="light"] #scroll-top { background: var(--brand); color: #fff; }
 [data-theme="light"] #scroll-top:hover { background: #1a93cd; }
