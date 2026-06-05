@@ -189,6 +189,20 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   }, { passive: true });
 })();
 
+/* ── CTA-БЛОК: ПОЯВЛЕНИЕ ─────────────────── */
+(function () {
+  var blocks = document.querySelectorAll('.cta-block');
+  if (!blocks.length) return;
+  var io = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  blocks.forEach(function (el) { io.observe(el); });
+})();
+
 /* ── FAQ АККОРДЕОН ───────────────────────── */
 document.querySelectorAll('.faq-btn').forEach(function (btn) {
   btn.addEventListener('click', function () {
