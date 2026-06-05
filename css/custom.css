@@ -638,27 +638,19 @@ main { padding-top: 0; position: relative; z-index: 1; }
 #scroll-top {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 9990;
   display: flex; align-items: center; justify-content: center;
-  width: 2.4rem; height: 2.4rem;
+  width: 2.6rem; height: 2.6rem;
   background: var(--brand);
   border: none;
   border-radius: 50%;
-  color: #fff; font-size: 1rem;
+  color: #fff; font-size: 1.1rem;
   cursor: pointer;
-  opacity: 0 !important; transform: translateY(14px) scale(.85) !important;
-  pointer-events: none;
-  box-shadow: 0 4px 18px rgba(14,127,192,.45);
+  box-shadow: 0 4px 18px rgba(14,127,192,.5);
   padding: 0;
-  transition: opacity .35s ease, transform .35s ease, background-color .35s ease, box-shadow .35s ease !important;
 }
 #scroll-top .st-label { display: none; }
-#scroll-top.visible {
-  opacity: 1 !important; transform: translateY(0) scale(1) !important;
-  pointer-events: auto;
-}
 #scroll-top:hover {
   background: #1a93cd;
-  box-shadow: 0 6px 24px rgba(14,127,192,.65);
-  transform: translateY(-2px) scale(1.08) !important;
+  box-shadow: 0 6px 24px rgba(14,127,192,.7);
 }
 [data-theme="light"] #scroll-top { background: var(--brand); color: #fff; }
 [data-theme="light"] #scroll-top:hover { background: #1a93cd; }
