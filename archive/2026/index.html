@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>ИИ-Монолит — Разработка ИИ-решений</title>
+  <meta name="description" content="Фриланс-разработчик ИИ: создание датасетов, развёртывание моделей, дообучение. Работаю под NDA как самозанятый." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="pre-inner">
+    <div class="pre-logo">ИИ‑Монолит</div>
+    <div class="pre-bar-wrap"><div class="pre-bar" id="preBar"></div></div>
+  </div>
+</div>
+
+<!-- Accessibility panel -->
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки доступности">
+  <p class="a11y-panel-title"><i class="bi bi-eye"></i> Для слабовидящих</p>
+  <div class="a11y-options">
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yLargeFont">
+      <span>Крупный шрифт</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yHighContrast">
+      <span>Высокий контраст</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yNoAnimations">
+      <span>Без анимаций</span>
+    </label>
+  </div>
+  <div class="a11y-panel-footer">
+    <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
+    <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
+  </div>
+</div>
+
+<!-- Particles -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Nav -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" id="navBrand">
+      <img src="/favicon.png" class="nav-brand-img" alt="" aria-hidden="true"> ИИ‑Монолит
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class="active">Главная</a></li>
+      <li><a href="/datasets.html">Датасеты</a></li>
+      <li><a href="/deployment.html">Развёртывание</a></li>
+      <li><a href="/finetuning.html">Дообучение</a></li>
+      <li><a href="/portfolio.html">Направления</a></li>
+      <li><a href="/legal.html">Документы</a></li>
+      <li><a class="nav-cta" href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Написать мне</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-a11y-btn" id="a11yToggle" type="button" aria-label="Версия для слабовидящих" title="Версия для слабовидящих" aria-expanded="false" aria-controls="a11yPanel">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+      </button>
+      <button class="nav-theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+      <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+        <i class="bi bi-list" id="burgerIcon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" id="heroEyebrow">Самозанятый · ИИ-разработчик</div>
+    <h1 class="hero-title" id="heroTitle">
+      <span class="line"><span class="line-inner">ИИ под ключ —</span></span>
+      <span class="line"><span class="line-inner"><em>от данных</em></span></span>
+      <span class="line"><span class="line-inner">до прода</span></span>
+    </h1>
+    <p class="hero-sub" id="heroSub">Создаю датасеты, дообучаю языковые модели и разворачиваю ИИ-сервисы. Работаю индивидуально, подписываю NDA, отвечаю за результат.</p>
+    <div class="hero-actions" id="heroActions">
+      <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-primary-hero">
+        <i class="bi bi-chat-dots"></i> Написать мне
+      </a>
+      <a href="/portfolio.html" class="btn-ghost-hero">Направления работы</a>
+    </div>
+  </div>
+  <button class="hero-scroll-hint" id="scrollHint" aria-label="Прокрутить вниз">
+    <i class="bi bi-chevron-down"></i>
+  </button>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-section">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><span class="ticker-value">NDA</span><span class="ticker-label">Конфиденциальность</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">99.5%</span><span class="ticker-label">SLA при деплое</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Full cycle</span><span class="ticker-label">от данных до прода</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">LoRA / QLoRA</span><span class="ticker-label">дообучение моделей</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">NLP · CV · TTS</span><span class="ticker-label">направления работы</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Самозанятый</span><span class="ticker-label">официально, чек сразу</span></div>
+    <div class="ticker-sep"></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="ticker-value">NDA</span><span class="ticker-label">Конфиденциальность</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">99.5%</span><span class="ticker-label">SLA при деплое</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Full cycle</span><span class="ticker-label">от данных до прода</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">LoRA / QLoRA</span><span class="ticker-label">дообучение моделей</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">NLP · CV · TTS</span><span class="ticker-label">направления работы</span></div>
+    <div class="ticker-sep"></div>
+    <div class="ticker-item"><span class="ticker-value">Самозанятый</span><span class="ticker-label">официально, чек сразу</span></div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services-section" id="servicesSection">
+  <div class="section-wrap">
+    <div class="section-label">Услуги</div>
+    <h2 class="section-h2">Чем могу помочь</h2>
+    <div class="services-grid" id="servicesGrid">
+      <a href="/datasets.html" class="svc-item" data-reveal>
+        <span class="svc-num">01</span>
+        <div class="svc-icon"><i class="bi bi-database"></i></div>
+        <div class="svc-title">Создание датасетов</div>
+        <p class="svc-desc">Собираю, размечаю и валидирую данные для обучения ИИ. Работаю с текстом, изображениями, аудио — любой объём под вашу задачу.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a href="/deployment.html" class="svc-item" data-reveal>
+        <span class="svc-num">02</span>
+        <div class="svc-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+        <div class="svc-title">Развёртывание моделей</div>
+        <p class="svc-desc">Разворачиваю модели в продакшен: Docker, Kubernetes, REST/gRPC API, мониторинг, CI/CD. Любые облака и on-premise.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a href="/finetuning.html" class="svc-item" data-reveal>
+        <span class="svc-num">03</span>
+        <div class="svc-icon"><i class="bi bi-stars"></i></div>
+        <div class="svc-title">Дообучение ИИ</div>
+        <p class="svc-desc">Адаптирую языковые модели под вашу область с помощью LoRA, QLoRA, RLHF и DPO. Результат оцениваю по согласованным метрикам.</p>
+        <span class="svc-link">Подробнее <i class="bi bi-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="aboutSection">
+  <div class="section-wrap">
+    <div class="section-label">Обо мне</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-h2" style="margin-bottom:2rem">Работаю один,<br>отвечаю лично</h2>
+        <p class="about-big-text">
+          Я — <strong>самозанятый ИИ-разработчик</strong>. Беру проекты без посредников: сам веду переговоры, сам делаю работу, сам передаю результат. Это значит прямую коммуникацию и персональную ответственность.
+          <br><br>
+          Специализируюсь на <strong>NLP, компьютерном зрении, рекомендательных системах</strong> и голосовых технологиях. Работаю официально — выдаю чек через «Мой налог».
+        </p>
+      </div>
+      <div class="about-facts">
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-shield-lock"></i></div>
+          <div>
+            <div class="fact-title">Конфиденциальность</div>
+            <div class="fact-sub">Подписываю NDA до начала работы</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-person-badge"></i></div>
+          <div>
+            <div class="fact-title">Прямой контакт</div>
+            <div class="fact-sub">Общаетесь напрямую — без менеджеров</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-receipt-cutoff"></i></div>
+          <div>
+            <div class="fact-title">Официально</div>
+            <div class="fact-sub">Самозанятый, НПД — чек сразу после оплаты</div>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon"><i class="bi bi-bullseye"></i></div>
+          <div>
+            <div class="fact-title">Измеримый результат</div>
+            <div class="fact-sub">Метрики качества фиксируем до старта</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process-section" id="processSection">
+  <div class="section-wrap">
+    <div class="section-label">Как работаю</div>
+    <h2 class="section-h2">Процесс</h2>
+    <div class="process-steps" id="processSteps">
+      <div class="process-step" data-step>
+        <div class="process-num">01</div>
+        <h4>Разбираемся в задаче</h4>
+        <p>Созвон или переписка — без лишних слов понимаем, что нужно</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">02</div>
+        <h4>Техническое задание</h4>
+        <p>Фиксируем метрики, сроки и стоимость — всё прозрачно</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">03</div>
+        <h4>Выполнение</h4>
+        <p>Работаю лично, регулярно отчитываюсь о прогрессе</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">04</div>
+        <h4>Проверка и доработка</h4>
+        <p>Валидирую по согласованным метрикам, итерирую до нужного</p>
+      </div>
+      <div class="process-step" data-step>
+        <div class="process-num">05</div>
+        <h4>Передача</h4>
+        <p>Полная документация, чек, поддержка 30 дней</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Expertise -->
+<section class="expertise-section" id="expertiseSection">
+  <div class="section-wrap">
+    <div class="section-label">Экспертиза</div>
+    <h2 class="section-h2">Технологии<br>и направления</h2>
+    <div class="expertise-tags" id="expertiseTags">
+      <span class="exp-tag highlight">NLP</span>
+      <span class="exp-tag highlight">LLM fine-tuning</span>
+      <span class="exp-tag highlight">LoRA / QLoRA</span>
+      <span class="exp-tag">Computer Vision</span>
+      <span class="exp-tag">YOLO · SAM · ViT</span>
+      <span class="exp-tag">RLHF · DPO</span>
+      <span class="exp-tag highlight">Dataset creation</span>
+      <span class="exp-tag">Semantic Search</span>
+      <span class="exp-tag">RAG</span>
+      <span class="exp-tag">TTS · STT</span>
+      <span class="exp-tag">Docker · Kubernetes</span>
+      <span class="exp-tag highlight">Python · PyTorch</span>
+      <span class="exp-tag">FastAPI · gRPC</span>
+      <span class="exp-tag">HuggingFace</span>
+      <span class="exp-tag">LangChain</span>
+      <span class="exp-tag">Qdrant · Chroma</span>
+      <span class="exp-tag">MLflow · W&B</span>
+      <span class="exp-tag highlight">Рекомендательные системы</span>
+      <span class="exp-tag">Аналитика данных</span>
+      <span class="exp-tag">OCR</span>
+      <span class="exp-tag">Multimodal AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="ctaSection">
+  <div class="section-wrap" style="padding-top:4rem;padding-bottom:7rem">
+    <div class="cta-block" id="ctaBlock">
+      <h2>Есть задача?<br>Обсудим.</h2>
+      <p>Напишите мне в Макс — опишите задачу, отвечу в течение часа в рабочее время и предложу решение.</p>
+      <div class="cta-actions">
+        <a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank" class="btn-primary-hero" style="font-size:1rem;padding:1rem 2.5rem">
+          <i class="bi bi-chat-dots"></i> Написать мне в Макс
+        </a>
+        <div class="qr-small">
+          <div id="qr-cta"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <img src="/favicon.png" class="nav-brand-img" alt="" aria-hidden="true"> ИИ&#x2011;Монолит
+        </div>
+        <p class="footer-tagline">Индивидуальная разработка ИИ-решений: датасеты, дообучение, деплой.</p>
+        <p class="footer-npd">Самозанятый · НПД (4% / 6%)</p>
+      </div>
+      <div class="footer-nav-links">
+        <div class="footer-nav-group">
+          <h6>Услуги</h6>
+          <ul>
+            <li><a href="/datasets.html">Датасеты</a></li>
+            <li><a href="/deployment.html">Развёртывание</a></li>
+            <li><a href="/finetuning.html">Дообучение</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h6>Прочее</h6>
+          <ul>
+            <li><a href="/portfolio.html">Направления</a></li>
+            <li><a href="/legal.html">Документы</a></li>
+            <li><a href="https://max.ru/join/iTRSfKXXbztLK4la5ITZTOpujwZKqXOOBZcsEJ03ioM" target="_blank">Написать мне</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> ИИ-Монолит. Все права защищены.</span>
+      <span>Специальный налоговый режим НПД</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/index.js"></script>
+
+<button id="scroll-top" aria-label="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <span class="st-icon"><i class="bi bi-arrow-up"></i></span>
+  <span class="st-label">Наверх</span>
+</button>
+</body>
+</html>
